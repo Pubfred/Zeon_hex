@@ -1,0 +1,26 @@
+[Unit]
+Description=ZEON's distributed currency daemon
+After=network.target
+
+[Service]
+User=zeon
+Group=zeon
+
+Type=forking
+PIDFile=/var/lib/zeond/zeond.pid
+
+ExecStart=/usr/bin/zeond -daemon -pid=/var/lib/zeond/zeond.pid \
+          -conf=/etc/zeon/zeon.conf -datadir=/var/lib/zeond
+
+ExecStop=-/usr/bin/zeon-cli -conf=/etc/zeon/zeon.conf \
+         -datadir=/var/lib/zeond stop
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target

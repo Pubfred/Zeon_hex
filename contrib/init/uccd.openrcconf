@@ -1,0 +1,26 @@
+# /etc/conf.d/zeond: config file for /etc/init.d/zeond
+
+# Config file location
+#BITCOIND_CONFIGFILE="/etc/zeon/zeon.conf"
+
+# What directory to write pidfile to?  (created and owned by $BITCOIND_USER)
+#BITCOIND_PIDDIR="/var/run/zeond"
+
+# What filename to give the pidfile
+#BITCOIND_PIDFILE="${BITCOIND_PIDDIR}/zeond.pid"
+
+# Where to write zeond data (be mindful that the blockchain is large)
+#BITCOIND_DATADIR="/var/lib/zeond"
+
+# User and group to own zeond process
+#BITCOIND_USER="zeon"
+#BITCOIND_GROUP="zeon"
+
+# Path to zeond executable
+#BITCOIND_BIN="/usr/bin/zeond"
+
+# Nice value to run zeond under
+#BITCOIND_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+BITCOIND_OPTS=""

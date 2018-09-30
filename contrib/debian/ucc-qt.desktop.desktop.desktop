@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=ZEON
+Comment=ZEON P2P Cryptocurrency
+Exec=zeon-qt %u
+Terminal=false
+Type=Application
+Icon=zeon128
+MimeType=x-scheme-handler/zeon;
+Categories=Office;Finance;
+Name[ru]=zeon-qt.desktop.desktop
