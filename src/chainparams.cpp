@@ -142,9 +142,9 @@ public:
         pchMessageStart[3] = 0x3f;
         vAlertPubKey = ParseHex("0442503c4a9d9715d84777efbf1ec9adfff96adf45db669cd66c2cbf8731604439c2fac2d6d05108a63112e34a3918113494e153ba650f0a3ac7fec3f3cba234eb");
         vZEONDevKey = ParseHex("bVHsDqrXB7VTStnWcs5akZg9CpiWW6tMyeAFXtLg7PKsWQXFEq2J"); // TEAMPubKey for fees
-        vZEONFundKey = ParseHex("ba6KvvbSihuThffqznexX1LA7syB7AWP5NS1yiAMy5D2mtv2YSZm"); // SWAPPubKey for fees
+        vZEONFundKey = ParseHex("ba6KvvbSihuThffqznexX1LA7syB7AWP5NS1yiAMy5D2mtv2YSZm"); // FUNDPubKey for fees
         nDevFee = 2; // TEAMFee %
-        nFundFee = 1; // FONDFee %
+        nFundFee = 1; // FNDFee %
         nDefaultPort = 42222;
         bnProofOfWorkLimit = ~uint256(0) >> 20;
         bnStartWork = ~uint256(0) >> 24;
@@ -283,7 +283,7 @@ public:
         assert(subsidySwitchPoints.size());
 
         vAlertPubKey = ParseHex("0442503c4a9d9715d84777efbf1ec9adfff96adf45db669cd66c2cbf8731604439c2fac2d6d05108a63112e34a3918113494e153ba650f0a3ac7fec3f3cba234eb");
-        nDefaultPort = 51112;
+        nDefaultPort = 52222;
         nEnforceBlockUpgradeMajority = 51;
         nRejectBlockOutdatedMajority = 75;
         nToCheckBlockUpgradeMajority = 100;
@@ -391,7 +391,7 @@ public:
         genesis.nNonce = 4715962;
 
         hashGenesisBlock = genesis.GetHash();
-        nDefaultPort = 61112;
+        nDefaultPort = 62222;
 
        //MineGenesis(genesis);
        // std::cout << genesis.ToString() << std::endl;
