@@ -139,8 +139,8 @@ void MasternodeList::StartAlias(std::string strAlias)
             std::string strError;
             std::string strOverall;
             std::string strResult;
-            bool fSucc = RpcStartMasternode(strAlias,strOverall,strError,strResult);
-            if(fSucc){
+            bool fSuccess = RpcStartMasternode(strAlias,strOverall,strError,strResult);
+            if(fSuccess){
                 strStatusHtml += "<br>" +strOverall + "<br>";
             }
             else{
@@ -160,7 +160,7 @@ void MasternodeList::StartAlias(std::string strAlias)
 
 void MasternodeList::StartAll(std::string strCommand)
 {
-    int nCountSuccful = 0;
+    int nCountSuccessful = 0;
     int nCountFailed = 0;
     std::string strFailedHtml;
 
@@ -179,10 +179,10 @@ void MasternodeList::StartAll(std::string strCommand)
 
         if (strCommand == "start-missing" && pmn) continue;
 
-        bool fSucc = RpcStartMasternode(strAlias,strOverall,strError,strResult);
+        bool fSuccess = RpcStartMasternode(strAlias,strOverall,strError,strResult);
 
-        if (fSucc) {
-            nCountSuccful++;
+        if (fSuccess) {
+            nCountSuccessful++;
         } else {
             nCountFailed++;
             strFailedHtml += "\nFailed to start " + mne.getAlias() + ". Error: " + strError;
@@ -191,7 +191,7 @@ void MasternodeList::StartAll(std::string strCommand)
     pwalletMain->Lock();
 
     std::string returnObj;
-    returnObj = strprintf("Succfully started %d masternodes, failed to start %d, total %d", nCountSuccful, nCountFailed, nCountFailed + nCountSuccful);
+    returnObj = strprintf("Successfully started %d masternodes, failed to start %d, total %d", nCountSuccessful, nCountFailed, nCountFailed + nCountSuccessful);
     if (nCountFailed > 0) {
         returnObj += strFailedHtml;
     }

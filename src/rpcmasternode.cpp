@@ -15,7 +15,7 @@
 #include "rpcserver.h"
 #include "utilmoneystr.h"
 
-#include <univalue.h>
+#include "univalue/include/univalue.h"
 
 #include <boost/tokenizer.hpp>
 #include <fstream>
@@ -46,7 +46,7 @@ void SendMoney(const CTxDestination& address, CAmount nValue, CWalletTx& wtxNew,
         throw JSONRPCError(RPC_WALLET_ERROR, strError);
     }
 
-    // Parse ZEON address
+    // Parse XDNA address
     CScript scriptPubKey = GetScriptForDestination(address);
 
     // Create and send the transaction
@@ -66,8 +66,8 @@ UniValue obfuscation(const UniValue& params, bool fHelp)
 {
     if (fHelp || params.size() == 0)
         throw runtime_error(
-            "obfuscation <zeonaddress> <amount>\n"
-            "zeonaddress, reset, or auto (AutoDenominate)"
+            "obfuscation <xdnaaddress> <amount>\n"
+            "xdnaaddress, reset, or auto (AutoDenominate)"
             "<amount> is a real and will be rounded to the next 0.1" +
             HelpRequiringPassphrase());
 
@@ -78,24 +78,24 @@ UniValue obfuscation(const UniValue& params, bool fHelp)
         if (fMasterNode)
             return "ObfuScation is not supported from masternodes";
 
-        return "DoAutomaticDenominating " + (obfuScationPool.DoAutomaticDenominating() ? "succful" : ("failed: " + obfuScationPool.GetStatus()));
+        return "DoAutomaticDenominating " + (obfuScationPool.DoAutomaticDenominating() ? "successful" : ("failed: " + obfuScationPool.GetStatus()));
     }
 
     if (params[0].get_str() == "reset") {
         obfuScationPool.Reset();
-        return "succfully reset obfuscation";
+        return "successfully reset obfuscation";
     }
 
     if (params.size() != 2)
         throw runtime_error(
-            "obfuscation <zeonaddress> <amount>\n"
-            "zeonaddress, denominate, or auto (AutoDenominate)"
+            "obfuscation <xdnaaddress> <amount>\n"
+            "xdnaaddress, denominate, or auto (AutoDenominate)"
             "<amount> is a real and will be rounded to the next 0.1" +
             HelpRequiringPassphrase());
 
     CBitcoinAddress address(params[0].get_str());
     if (!address.IsValid())
-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid ZEON address");
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid XDNA address");
 
     // Amount
     CAmount nAmount = AmountFromValue(params[1]);
@@ -120,7 +120,7 @@ UniValue getpoolinfo(const UniValue& params, bool fHelp)
 
             "\nResult:\n"
             "{\n"
-            "  \"current\": \"addr\",    (string) ZEON address of current masternode\n"
+            "  \"current\": \"addr\",  (string) XDNA address of current masternode\n"
             "  \"state\": xxxx,        (string) unknown\n"
             "  \"entries\": xxxx,      (numeric) Number of entries\n"
             "  \"accepted\": xxxx,     (numeric) Number of entries accepted\n"
@@ -167,7 +167,7 @@ UniValue masternode(const UniValue& params, bool fHelp)
             "  debug        - Print masternode status\n"
             "  genkey       - Generate new masternodeprivkey\n"
             "  outputs      - Print masternode compatible outputs\n"
-            "  start        - Start masternode configured in zeon.conf\n"
+            "  start        - Start masternode configured in xdna.conf\n"
             "  start-alias  - Start single masternode by assigned alias configured in masternode.conf\n"
             "  start-<mode> - Start masternodes configured in masternode.conf (<mode>: 'all', 'missing', 'disabled')\n"
             "  status       - Print masternode status information\n"
@@ -303,7 +303,7 @@ UniValue listmasternodes(const UniValue& params, bool fHelp)
             "    \"txhash\": \"hash\",  (string) Collateral transaction hash\n"
             "    \"outidx\": n,         (numeric) Collateral transaction output index\n"
             "    \"status\": s,         (string) Status (ENABLED/EXPIRED/REMOVE/etc)\n"
-            "    \"addr\": \"addr\",    (string) Masternode ZEON address\n"
+            "    \"addr\": \"addr\",    (string) Masternode XDNA address\n"
             "    \"version\": v,        (numeric) Masternode protocol version\n"
             "    \"lastseen\": ttt,     (numeric) The time in seconds since epoch (Jan 1 1970 GMT) of the last seen\n"
             "    \"activetime\": ttt,   (numeric) The time in seconds since epoch (Jan 1 1970 GMT) masternode has been active\n"
@@ -373,7 +373,7 @@ UniValue masternodeconnect(const UniValue& params, bool fHelp)
             "1. \"address\"     (string, required) IP or net address to connect to\n"
 
             "\nExamples:\n" +
-            HelpExampleCli("masternodeconnect", "\"192.168.0.6:41112\"") + HelpExampleRpc("masternodeconnect", "\"192.168.0.6:41112\""));
+            HelpExampleCli("masternodeconnect", "\"192.168.0.6:1945\"") + HelpExampleRpc("masternodeconnect", "\"192.168.0.6:1945\""));
 
     std::string strAddress = params[0].get_str();
 
@@ -506,33 +506,45 @@ UniValue masternodecurrent (const UniValue& params, bool fHelp)
     if (fHelp || (params.size() != 0))
         throw runtime_error(
             "masternodecurrent\n"
-            "\nGet current masternode winner\n"
+            "\nGet current masternode winners\n"
 
             "\nResult:\n"
-            "{\n"
-            "  \"protocol\": xxxx,        (numeric) Protocol version\n"
-            "  \"txhash\": \"xxxx\",      (string) Collateral transaction hash\n"
-            "  \"pubkey\": \"xxxx\",      (string) MN Public key\n"
-            "  \"lastseen\": xxx,       (numeric) Time since epoch of last seen\n"
-            "  \"activeseconds\": xxx,  (numeric) Seconds MN has been active\n"
-            "}\n"
+            "[\n"
+            "  {\n"
+            "    \"level\": xxxx,         (numeric) MN level\n"
+            "    \"protocol\": xxxx,      (numeric) Protocol version\n"
+            "    \"txhash\": \"xxxx\",    (string)  Collateral transaction hash\n"
+            "    \"pubkey\": \"xxxx\",    (string)  MN Public key\n"
+            "    \"lastseen\": xxx,       (numeric) Time since epoch of last seen\n"
+            "    \"activeseconds\": xxx,  (numeric) Seconds MN has been active\n"
+            "  },\n"
+            "  ...\n"
+            "]\n"
             "\nExamples:\n" +
             HelpExampleCli("masternodecurrent", "") + HelpExampleRpc("masternodecurrent", ""));
 
-    //fixme: GetCurrentMasterNode add MN level
-    CMasternode* winner = mnodeman.GetCurrentMasterNode(CMasternode::LevelValue::UNSPECIFIED, 1);
-    if (winner) {
+    UniValue result{UniValue::VARR};
+
+    for(unsigned l = CMasternode::LevelValue::MIN; l <= CMasternode::LevelValue::MAX; ++l) {
+
+        CMasternode* winner = mnodeman.GetCurrentMasterNode(l, 1);
+
+        if(!winner)
+            continue;
+
         UniValue obj(UniValue::VOBJ);
 
+        obj.push_back(Pair("level", winner->Level()));
         obj.push_back(Pair("protocol", (int64_t)winner->protocolVersion));
         obj.push_back(Pair("txhash", winner->vin.prevout.hash.ToString()));
         obj.push_back(Pair("pubkey", CBitcoinAddress(winner->pubKeyCollateralAddress.GetID()).ToString()));
         obj.push_back(Pair("lastseen", (winner->lastPing == CMasternodePing()) ? winner->sigTime : (int64_t)winner->lastPing.sigTime));
         obj.push_back(Pair("activeseconds", (winner->lastPing == CMasternodePing()) ? 0 : (int64_t)(winner->lastPing.sigTime - winner->sigTime)));
-        return obj;
+
+        result.push_back(obj);
     }
 
-    throw runtime_error("unknown");
+    return result;
 }
 
 UniValue masternodedebug (const UniValue& params, bool fHelp)
@@ -595,7 +607,7 @@ UniValue startmasternode (const UniValue& params, bool fHelp)
             "  \"detail\": [\n"
             "    {\n"
             "      \"node\": \"xxxx\",    (string) Node name or alias\n"
-            "      \"result\": \"xxxx\",  (string) 'succ' or 'failed'\n"
+            "      \"result\": \"xxxx\",  (string) 'success' or 'failed'\n"
             "      \"error\": \"xxxx\"    (string) Error message, if failed\n"
             "    }\n"
             "    ,...\n"
@@ -635,7 +647,7 @@ UniValue startmasternode (const UniValue& params, bool fHelp)
         std::vector<CMasternodeConfig::CMasternodeEntry> mnEntries;
         mnEntries = masternodeConfig.getEntries();
 
-        int succful = 0;
+        int successful = 0;
         int failed = 0;
 
         UniValue resultsObj(UniValue::VARR);
@@ -657,10 +669,10 @@ UniValue startmasternode (const UniValue& params, bool fHelp)
 
             UniValue statusObj(UniValue::VOBJ);
             statusObj.push_back(Pair("alias", mne.getAlias()));
-            statusObj.push_back(Pair("result", result ? "succ" : "failed"));
+            statusObj.push_back(Pair("result", result ? "success" : "failed"));
 
             if (result) {
-                succful++;
+                successful++;
                 statusObj.push_back(Pair("error", ""));
             } else {
                 failed++;
@@ -673,7 +685,7 @@ UniValue startmasternode (const UniValue& params, bool fHelp)
             pwalletMain->Lock();
 
         UniValue returnObj(UniValue::VOBJ);
-        returnObj.push_back(Pair("overall", strprintf("Succfully started %d masternodes, failed to start %d, total %d", succful, failed, succful + failed)));
+        returnObj.push_back(Pair("overall", strprintf("Successfully started %d masternodes, failed to start %d, total %d", successful, failed, successful + failed)));
         returnObj.push_back(Pair("detail", resultsObj));
 
         return returnObj;
@@ -686,7 +698,7 @@ UniValue startmasternode (const UniValue& params, bool fHelp)
             throw JSONRPCError(RPC_WALLET_UNLOCK_NEEDED, "Error: Please enter the wallet passphrase with walletpassphrase first.");
 
         bool found = false;
-        int succful = 0;
+        int successful = 0;
         int failed = 0;
 
         UniValue resultsObj(UniValue::VARR);
@@ -702,10 +714,10 @@ UniValue startmasternode (const UniValue& params, bool fHelp)
 
             bool result = activeMasternode.Register(mne.getIp(), mne.getPrivKey(), mne.getTxHash(), mne.getOutputIndex(), errorMessage);
 
-            statusObj.push_back(Pair("result", result ? "succful" : "failed"));
+            statusObj.push_back(Pair("result", result ? "successful" : "failed"));
 
             if (result) {
-                succful++;
+                successful++;
                 statusObj.push_back(Pair("error", ""));
             } else {
                 failed++;
@@ -726,7 +738,7 @@ UniValue startmasternode (const UniValue& params, bool fHelp)
             pwalletMain->Lock();
 
         UniValue returnObj(UniValue::VOBJ);
-        returnObj.push_back(Pair("overall", strprintf("Succfully started %d masternodes, failed to start %d, total %d", succful, failed, succful + failed)));
+        returnObj.push_back(Pair("overall", strprintf("Successfully started %d masternodes, failed to start %d, total %d", successful, failed, successful + failed)));
         returnObj.push_back(Pair("detail", resultsObj));
 
         return returnObj;
@@ -859,7 +871,7 @@ UniValue getmasternodestatus (const UniValue& params, bool fHelp)
             "  \"txhash\": \"xxxx\",      (string) Collateral transaction hash\n"
             "  \"outputidx\": n,        (numeric) Collateral transaction output index number\n"
             "  \"netaddr\": \"xxxx\",     (string) Masternode network address\n"
-            "  \"addr\": \"xxxx\",        (string) ZEON address for masternode payments\n"
+            "  \"addr\": \"xxxx\",        (string) XDNA address for masternode payments\n"
             "  \"status\": \"xxxx\",      (string) Masternode status\n"
             "  \"message\": \"xxxx\"      (string) Masternode status message\n"
             "}\n"
@@ -901,7 +913,7 @@ UniValue getmasternodewinners(const UniValue& params, bool fHelp)
             "  {\n"
             "    \"nHeight\": n,           (numeric) block height\n"
             "    \"winner\": {\n"
-            "      \"address\": \"xxxx\",  (string)  ZEON MN Address\n"
+            "      \"address\": \"xxxx\",  (string)  XDNA MN Address\n"
             "      \"level\": n,           (numeric) Masternode level\n"
             "      \"nVotes\": n,          (numeric) Number of votes for winner\n"
             "    }\n"
@@ -915,7 +927,7 @@ UniValue getmasternodewinners(const UniValue& params, bool fHelp)
             "    \"nHeight\": n,            (numeric) block height\n"
             "    \"winner\": [\n"
             "      {\n"
-            "        \"address\": \"xxxx\", (string)  ZEON MN Address\n"
+            "        \"address\": \"xxxx\", (string)  XDNA MN Address\n"
             "        \"level\": n,          (numeric) Masternode level\n"
             "        \"nVotes\": n,         (numeric) Number of votes for winner\n"
             "      }\n"
