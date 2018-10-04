@@ -28,20 +28,19 @@ SplashScreen::SplashScreen(Qt::WindowFlags f, const NetworkStyle* networkStyle) 
 {
     // set reference point, paddings
     int paddingLeft = 14;
-    int paddingTop = 450;
+    int paddingTop = 470;
     int titleVersionVSpace = 17;
     int titleCopyrightVSpace = 32;
-
     float fontFactor = 1.0;
 
     // define text to place
     QString titleText = tr("ZEON Core");
     QString versionText = QString(tr("Version %1")).arg(QString::fromStdString(FormatFullVersion()));
-    QString copyrightTextBtc = QChar(0xA9) + QString(" 2009-2014 ").arg(COPYRIGHT_YEAR) + QString(tr("The Bitcoin Core developers"));
-    QString copyrightTextDash = QChar(0xA9) + QString(" 2014-2015 ").arg(COPYRIGHT_YEAR) + QString(tr("The Dash Core developers"));
-    QString copyrightTextPIVX = QChar(0xA9) + QString(" 2015-2017 ").arg(COPYRIGHT_YEAR) + QString(tr("The PIVX Core developers"));
-    QString copyrightTextXDNA = QChar(0xA9) + QString(" 2017-2018 ").arg(COPYRIGHT_YEAR) + QString(tr("The XDNA Core developers"));
-    QString copyrightTextZEON = QChar(0xA9) + QString(" 2018-2018 ").arg(COPYRIGHT_YEAR) + QString(tr("The ZEON developers"));
+    QString copyrightTextBtc  = QChar(0xA9) + QString(" 2009-%1 ").arg(COPYRIGHT_YEAR) + QString(tr("The Bitcoin Core developers"));
+    QString copyrightTextDash = QChar(0xA9) + QString(" 2014-%1 ").arg(COPYRIGHT_YEAR) + QString(tr("The Dash Core developers"));
+    QString copyrightTextPIVX = QChar(0xA9) + QString(" 2015-%1 ").arg(COPYRIGHT_YEAR) + QString(tr("The PIVX Core developers"));
+    QString copyrightTextXDNA = QChar(0xA9) + QString(" 2017-%1 ").arg(COPYRIGHT_YEAR) + QString(tr("The XDNA Core developers"));
+    QString copyrightTextZEON = QChar(0xA9) + QString(" 2018-%1 ").arg(COPYRIGHT_YEAR) + QString(tr("The ZEON developers"));
     QString titleAddText = networkStyle->getTitleAddText();
 
     QString font = QApplication::font().toString();
@@ -51,8 +50,8 @@ SplashScreen::SplashScreen(Qt::WindowFlags f, const NetworkStyle* networkStyle) 
     pixmap = networkStyle->getSplashImage();
   
     QPainter pixPaint(&pixmap);
-    pixPaint.setPen(QColor(255, 255, 255));
-
+    pixPaint.setPen(QColor(100, 100, 100));
+    
     // check font size and drawing with
     pixPaint.setFont(QFont(font, 28 * fontFactor));
     QFontMetrics fm = pixPaint.fontMetrics();
