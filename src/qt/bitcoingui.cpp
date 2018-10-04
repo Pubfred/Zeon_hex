@@ -215,6 +215,7 @@ QString windowTitle = tr("ZEON Core") + " - ";
     progressBarLabel->setObjectName(QStringLiteral("progressBarLabel"));
     progressBarLabel->setVisible(true);
     progressBar = new GUIUtil::ProgressBar();
+    progressBar->setAlignment(Qt::AlignCenter);                                                                
     progressBar->setVisible(true);
 
     // Override style sheet for progress bar for styles that have a segmented progress bar,
