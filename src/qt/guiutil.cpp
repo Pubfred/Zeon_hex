@@ -605,7 +605,7 @@ bool SetStartOnSystemStartup(bool fAutoStart)
             CLSCTX_INPROC_SERVER, IID_IShellLink,
             reinterpret_cast<void**>(&psl));
 
-        if (SZEONEEDED(hres)) {
+        if (SUCCEEDED(hres)) {
             // Get the current executable path
             TCHAR pszExePath[MAX_PATH];
             GetModuleFileName(NULL, pszExePath, sizeof(pszExePath));
@@ -624,7 +624,7 @@ bool SetStartOnSystemStartup(bool fAutoStart)
             IPersistFile* ppf = NULL;
             hres = psl->QueryInterface(IID_IPersistFile,
                 reinterpret_cast<void**>(&ppf));
-            if (SZEONEEDED(hres)) {
+            if (SUCCEEDED(hres)) {
                 WCHAR pwsz[MAX_PATH];
                 // Ensure that the string is ANSI.
                 MultiByteToWideChar(CP_ACP, 0, StartupShortcutPath().string().c_str(), -1, pwsz, MAX_PATH);
