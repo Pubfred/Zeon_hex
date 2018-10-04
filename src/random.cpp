@@ -68,7 +68,7 @@ void RandAddSeedPerfmon()
         vData.resize(std::max((vData.size() * 3) / 2, nMaxSize)); // Grow size of buffer exponentially
     }
     RegCloseKey(HKEY_PERFORMANCE_DATA);
-    if (ret == ERROR_SZEONESS) {
+    if (ret == ERROR_SUCCESS) {
         RAND_add(begin_ptr(vData), nSize, nSize / 100.0);
         OPENSSL_cleanse(begin_ptr(vData), nSize);
         LogPrint("rand", "%s: %lu bytes\n", __func__, nSize);
