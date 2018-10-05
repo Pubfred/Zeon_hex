@@ -141,7 +141,7 @@ public:
         pchMessageStart[1] = 0x41;
         pchMessageStart[2] = 0x2a;
         pchMessageStart[3] = 0x3f;
-        vAlertPubKey = ParseHex("0442503c4a9d9715d84777efbf1ec9adfff96adf45db669cd66c2cbf8731604439c2fac2d6d05108a63112e34a3918113494e153ba650f0a3ac7fec3f3cba234eb");
+        vAlertPubKey = ParseHex("042FDFF90DF0A586E5DACB07F1550881D4A6F1A9AE0BB9DE549DE0A39A306527CF389A9675E624C7D575BD7A5DE6C72C830AA79762BF57D60904D2C1F9D1214D20");
         vZEONDevKey = ParseHex("bVHsDqrXB7VTStnWcs5akZg9CpiWW6tMyeAFXtLg7PKsWQXFEq2J"); // TEAMPubKey for fees
         vZEONFundKey = ParseHex("ba6KvvbSihuThffqznexX1LA7syB7AWP5NS1yiAMy5D2mtv2YSZm"); // FUNDPubKey for fees
         nDevFee = 2; // TEAMFee %
