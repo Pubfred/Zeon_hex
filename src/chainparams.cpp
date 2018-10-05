@@ -283,7 +283,7 @@ public:
         };
         assert(subsidySwitchPoints.size());
 
-        vAlertPubKey = ParseHex("0442503c4a9d9715d84777efbf1ec9adfff96adf45db669cd66c2cbf8731604439c2fac2d6d05108a63112e34a3918113494e153ba650f0a3ac7fec3f3cba234eb");
+        vAlertPubKey = ParseHex("040E40B05431EC1E5599E6F7142B83C3B3C2B344FFFCD723B563CE186686FBDCBB0EC0802301B2A4CAEA8D5C1BB42320E3A9A1BA87D6CD598953CB586291362EDA");
         nDefaultPort = 52222;
         nEnforceBlockUpgradeMajority = 51;
         nRejectBlockOutdatedMajority = 75;
