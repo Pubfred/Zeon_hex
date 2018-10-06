@@ -142,10 +142,10 @@ public:
         pchMessageStart[2] = 0x2a;
         pchMessageStart[3] = 0x3f;
         vAlertPubKey = ParseHex("042FDFF90DF0A586E5DACB07F1550881D4A6F1A9AE0BB9DE549DE0A39A306527CF389A9675E624C7D575BD7A5DE6C72C830AA79762BF57D60904D2C1F9D1214D20");
-        vZEONDevKey = ParseHex("bVHsDqrXB7VTStnWcs5akZg9CpiWW6tMyeAFXtLg7PKsWQXFEq2J"); // TEAMPubKey for fees
-        vZEONFundKey = ParseHex("ba6KvvbSihuThffqznexX1LA7syB7AWP5NS1yiAMy5D2mtv2YSZm"); // FUNDPubKey for fees
-        nDevFee = 2; // TEAMFee %
-        nFundFee = 1; // FNDFee %
+        vZEONDevKey  = ParseHex("023db1444cb3658c1f8edf5b3914c63861631211b7172757df08785396b3de12af"); // TEAMPubKey for fees
+        vZEONFundKey = ParseHex("02d9153958bf7540bdb8ed8f679e66d12d228fe86b62d0fdbfc627fdc69e8b366e"); // FUNDPubKey for fees
+        nDevFee = 0; // TEAMFee %
+        nFundFee = 0; // FNDFee %
         nDefaultPort = 42222;
         bnProofOfWorkLimit = ~uint256(0) >> 20;
         bnStartWork = ~uint256(0) >> 24;
@@ -235,7 +235,7 @@ public:
 
         nPoolMaxTransactions = 3;
         strSporkKey = "041d41c383fc0c1a0869e210bf2e309e0b71f6a6545c963b7191f1e5522d9c7b787a602ea462bad9d5e41f3430ba79c7f751d02b09fcff57ce432d451a83343fe4";
-        strObfuscationPoolDummyAddress = "ZNPjjYiZLYM9an3DtdDG19ykEcBTtVQemY";
+        strObfuscationPoolDummyAddress = "ZY6G2GGxSeshTD2HZMd43ygsMoRnW7bMEr";
         nStartMasternodePayments = 1538280876;
     }
 
