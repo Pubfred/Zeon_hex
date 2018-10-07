@@ -144,8 +144,8 @@ public:
         vAlertPubKey = ParseHex("042FDFF90DF0A586E5DACB07F1550881D4A6F1A9AE0BB9DE549DE0A39A306527CF389A9675E624C7D575BD7A5DE6C72C830AA79762BF57D60904D2C1F9D1214D20");
         vZEONDevKey  = ParseHex("023db1444cb3658c1f8edf5b3914c63861631211b7172757df08785396b3de12af"); // TEAMPubKey for fees
         vZEONFundKey = ParseHex("02d9153958bf7540bdb8ed8f679e66d12d228fe86b62d0fdbfc627fdc69e8b366e"); // FUNDPubKey for fees
-        nDevFee = 0; // TEAMFee %
-        nFundFee = 0; // FNDFee %
+        nDevFee = 1; // TEAMFee %
+        nFundFee = 2; // FUNDFee %
         nDefaultPort = 42222;
         bnProofOfWorkLimit = ~uint256(0) >> 20;
         bnStartWork = ~uint256(0) >> 24;
