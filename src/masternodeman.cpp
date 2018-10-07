@@ -640,7 +640,7 @@ CMasternode* CMasternodeMan::GetNextMasternodeInQueueForPayment(int nBlockHeight
             continue;
 
         //it's in the list -- so let's skip it
-        if(masternodePayments.IsScheduled(mn, nMnCount, nBlockHeight))
+        if(masternodePayments.IsScheduled(mn, nBlockHeight))
             continue;
 
         //it's too new, wait for a cycle
