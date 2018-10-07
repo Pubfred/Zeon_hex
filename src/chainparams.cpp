@@ -210,7 +210,7 @@ public:
         assert(genesis.hashMerkleRoot == uint256("229397f8dfa59e9bd89f462389fbef412773ab119d43093db540881b4dd8178e"));
 
         vSeeds.push_back(CDNSSeedData("zeonnetwork.org", "seednode1.zeonnetwork.org"));     // Primary DNS Seeder
-	vSeeds.push_back(CDNSSeedData("18.224.69.185", "18.224.69.185"));                   // Single Node
+	vSeeds.push_back(CDNSSeedData("Sn1", "18.224.69.185"));                   // Single Node
        // vSeeds.push_back(CDNSSeedData("zeonnetwork.org", "seednode3.zeonnetwork.org"));
         
 
