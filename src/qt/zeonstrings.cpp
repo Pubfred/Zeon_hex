@@ -206,10 +206,10 @@ QT_TRANSLATE_NOOP("zeon-core", ""
 QT_TRANSLATE_NOOP("zeon-core", ""
 "You must specify a masternodeprivkey in the configuration. Please see "
 "documentation for help."),
-QT_TRANSLATE_NOOP("zeon-core", "(41112 could be used only on mainnet)"),
+QT_TRANSLATE_NOOP("zeon-core", "(42222 could be used only on mainnet)"),
 QT_TRANSLATE_NOOP("zeon-core", "(default: %s)"),
 QT_TRANSLATE_NOOP("zeon-core", "(default: 1)"),
-QT_TRANSLATE_NOOP("zeon-core", "(must be 41112 for mainnet)"),
+QT_TRANSLATE_NOOP("zeon-core", "(must be 42222 for mainnet)"),
 QT_TRANSLATE_NOOP("zeon-core", "<category> can be:"),
 QT_TRANSLATE_NOOP("zeon-core", "Accept command line and JSON-RPC commands"),
 QT_TRANSLATE_NOOP("zeon-core", "Accept connections from outside (default: 1 if no -proxy or -connect)"),

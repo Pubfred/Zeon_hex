@@ -1621,7 +1621,7 @@ double ConvertBitsToDouble(unsigned int nBits)
 CAmount GetBlockValue(int nHeight, uint32_t nTime)
 {
     if (nHeight == 0) {
-        return 5300000 * COIN;
+        return 400000 * COIN;
     } else if (nHeight < Params().ANTI_INSTAMINE_TIME()) {
         return 1 * COIN;
 
