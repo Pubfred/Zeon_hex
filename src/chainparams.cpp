@@ -211,6 +211,7 @@ public:
 
         vSeeds.push_back(CDNSSeedData("zeonnetwork.org", "seednode1.zeonnetwork.org"));     // Primary DNS Seeder
 	vSeeds.push_back(CDNSSeedData("Sn1", "18.224.69.185"));                   // Single Node
+	vSeeds.push_back(CDNSSeedData("Sn2", "45.77.137.85"));                   // Single Node
        // vSeeds.push_back(CDNSSeedData("zeonnetwork.org", "seednode3.zeonnetwork.org"));
         
 
