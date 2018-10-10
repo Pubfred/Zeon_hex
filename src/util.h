@@ -223,12 +223,18 @@ void LoopForever(const char* name, Callable func, int64_t msecs)
         }
     } catch (boost::thread_interrupted) {
         LogPrintf("%s thread stop\n", name);
+        // rethrow exception if current thread is not the "net" thread
+        if (strcmp(name, "net"))
         throw;
     } catch (std::exception& e) {
         PrintExceptionContinue(&e, name);
+        // rethrow exception if current thread is not the "net" thread
+        if (strcmp(name, "net"))
         throw;
     } catch (...) {
         PrintExceptionContinue(NULL, name);
+        // rethrow exception if current thread is not the "net" thread
+        if (strcmp(name, "net"))
         throw;
     }
 }
