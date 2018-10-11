@@ -17,7 +17,7 @@ static const int MAX_PASSPHRASE_SIZE = 1024;
 /* ZEON GUI -- Size of icons in status bar */
 static const int STATUSBAR_ICONSIZE = 32;
 
-static const bool DEFAULT_SPLASHSCREEN = true;
+static const bool DEFAULT_SPLASHSCREEN = false;
 
 /* Invalid field background style */
 #define STYLE_INVALID "background:#FF8080"
