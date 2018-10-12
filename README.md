@@ -15,7 +15,7 @@ If you like our Idea, feel free to contact us and work with us.
 ### Coin Specs
 
 <table>
-<tr><td>Name & ticker</td><td>United Community Coin (ZEON)</td></tr>
+<tr><td>Name & ticker</td><td> Zeon (ZEON)</td></tr>
 <tr><td>Consensus algorithm</td><td>PoW/POS</td></tr>
 <tr><td>POW phase duration</td><td>777000 blocks</td></tr>
 <tr><td>PoW block reward</td><td>Dynamic from 4 to 511 ZEON</td></tr>
