@@ -18,7 +18,7 @@ If you like our Idea, feel free to contact us and work with us.
 <tr><td>Name & ticker</td><td> Zeon (ZEON)</td></tr>
 <tr><td>Consensus algorithm</td><td>PoW/POS</td></tr>
 <tr><td>POW phase duration</td><td>777000 blocks</td></tr>
-<tr><td>PoW block reward</td><td>Dynamic from 4 to 511 ZEON</td></tr>
+<tr><td>PoW block reward</td><td>Dynamic from 4 to 109 ZEON</td></tr>
 <tr><td>Instamine protection</td><td>First 720 blocks</td></tr>
 <tr><td>Hashing algorithm</td><td>HEX</td></tr>
 <tr><td>Estimated ZEON supply during POW</td><td>80,000,000</td></tr>
