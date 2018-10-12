@@ -3,14 +3,14 @@
 ZEON Core integration/staging repository
 =====================================
 
-ZEON is a brand new digital currency building up a global Community to be united against scam-attempts. We will offer Swap-Solutions for Communitys which has been scammed. Also we will Support Charity Organisations and - who knows - eventually you all onedays can pay in big Online Shops with our United Coin (UC). The Community stands at first place, so there will be a Government System where each holder can vote for actual Projects. It is NOT intented to be a HIGH ROI Coin, we will offer support for scammed Peoples as a long-Term Subject.
-You may ask why we have such a huge Premine?! To offer swaps for scammed coins we need a lot of Coins and also there will be a fee during the Lifetime of the Project so that we can offer the swaps (with a specific ratio).
+ZEON  is a brand new digital currency that combines all the positive aspects of successful digital currencies, while taking into account their flaws and weak points. The project brings tangible benefits not only to the digital world but also to the real one.
 
 The ZEON Code was forked from [XDNA Project](https://xdna.io/).
 
 More information soon at [zeonnetwork.org](http://www.zeonnetwork.org).
 
-If you like our Idea, feel free to contact us and work with us. For Discussions we use Discord: [Click here to follow invite Link](https://discord.gg/CcMaHNh).
+If you like our Idea, feel free to contact us and work with us. 
+
 
 ### Coin Specs
 
@@ -27,7 +27,7 @@ If you like our Idea, feel free to contact us and work with us. For Discussions 
 <tr><td>POS block reward</td><td>24 ZEON lowering by 4 coins every 525600 blocks until block reward is 1 ZEON</td></tr>
 <tr><td>POS block reward distribution</td><td>SeeSaw</td></tr>
 <tr><td>Estimated ZEON supply during 15 years of POS</td><td>47,000,000</td></tr>
-<tr><td>Premine</td><td>5,3000,00 ZEON (4.17% of total supply due many swapping coins are needed)</td></tr>
+<tr><td>Premine</td><td> 400 000  ZEON (0.5 % of total supply )</td></tr>
 <tr><td>Blocksize</td><td>1 MB</td></tr>
 <tr><td>Blocktime average</td><td>1 min (DGW3)</td></tr>
 <tr><td>Number of transaction confirmations</td><td>6</td></tr>
