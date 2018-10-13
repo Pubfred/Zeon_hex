@@ -1,5 +1,9 @@
 [![Build Status](https://travis-ci.org/ZEONNetwork/zeon.svg?branch=master)](https://travis-ci.org/ZEONNetwork/zeon)
 
+
+![Screenshot](zeon.png)
+
+
 ZEON Core integration/staging repository
 =====================================
 
