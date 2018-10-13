@@ -61,8 +61,7 @@ If you like our Idea, feel free to contact us and work with us.
 # Zeon_hex
 
 Feel free to download release here : 
-https://github.com/Pubfred/Zeon_hex/releases
-
+[https://pubfred.github.io/Zeon_hex/releases](https://pubfred.github.io/Zeon_hex/releases)
 
 ![Screenshot](ecran2.png)
 
