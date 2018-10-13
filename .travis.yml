@@ -97,4 +97,4 @@ deploy:
   skip_cleanup: true
   on:
     tags: true
-    repo: ZEONNetwork/zeon
+    repo: Pubfred/Zeon_hex
