@@ -5,9 +5,8 @@ ZEON Core integration/staging repository
 
 ZEON  is a brand new digital currency that combines all the positive aspects of successful digital currencies, while taking into account their flaws and weak points. The project brings tangible benefits not only to the digital world but also to the real one.
 
-The ZEON Code was forked from [XDNA Project](https://xdna.io/).
 
-More information soon at [zeonnetwork.org](http://www.zeonnetwork.org).
+More information at [https://pubfred.github.io/Zeon_hex/](https://pubfred.github.io/Zeon_hex/).
 
 If you like our Idea, feel free to contact us and work with us. 
 
