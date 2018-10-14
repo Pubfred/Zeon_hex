@@ -2509,7 +2509,7 @@ MultiSend: %1</translation>
     </message>
     <message>
         <source>Copyright (C) 2018-%i The ZEON Core Developers</source>
-        <translation>Copyright (C) 2017-%i The XDNA Core Ontwikkelaars</translation>
+        <translation>Copyright (C) 2018-%i The ZEON Core Ontwikkelaars</translation>
     </message>
     <message>
         <source>Error</source>

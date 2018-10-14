@@ -4297,7 +4297,7 @@ rpcpassword=%s
     </message>
     <message>
         <source>Copyright (C) 2018-%i The ZEON Core Developers</source>
-        <translation>Copyright (C) 2017-%i The XDNA Core 개발자</translation>
+        <translation>Copyright (C) 2018-%i The ZEON Core 개발자</translation>
     </message>
     <message>
         <source>Corrupted block database detected</source>
