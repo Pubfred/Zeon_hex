@@ -15,7 +15,7 @@
 #include "rpcserver.h"
 #include "utilmoneystr.h"
 
-#include "univalue/include/univalue.h"
+#include <univalue.h>
 
 #include <boost/tokenizer.hpp>
 #include <fstream>
@@ -66,8 +66,8 @@ UniValue obfuscation(const UniValue& params, bool fHelp)
 {
     if (fHelp || params.size() == 0)
         throw runtime_error(
-            "obfuscation <zeonaddress> <amount>\n"
-            "zeonaddress, reset, or auto (AutoDenominate)"
+            "obfuscation <xdnaaddress> <amount>\n"
+            "xdnaaddress, reset, or auto (AutoDenominate)"
             "<amount> is a real and will be rounded to the next 0.1" +
             HelpRequiringPassphrase());
 
@@ -88,8 +88,8 @@ UniValue obfuscation(const UniValue& params, bool fHelp)
 
     if (params.size() != 2)
         throw runtime_error(
-            "obfuscation <zeonaddress> <amount>\n"
-            "zeonaddress, denominate, or auto (AutoDenominate)"
+            "obfuscation <xdnaaddress> <amount>\n"
+            "xdnaaddress, denominate, or auto (AutoDenominate)"
             "<amount> is a real and will be rounded to the next 0.1" +
             HelpRequiringPassphrase());
 
@@ -120,7 +120,7 @@ UniValue getpoolinfo(const UniValue& params, bool fHelp)
 
             "\nResult:\n"
             "{\n"
-            "  \"current\": \"addr\",  (string) XDNA address of current masternode\n"
+            "  \"current\": \"addr\",    (string) XDNA address of current masternode\n"
             "  \"state\": xxxx,        (string) unknown\n"
             "  \"entries\": xxxx,      (numeric) Number of entries\n"
             "  \"accepted\": xxxx,     (numeric) Number of entries accepted\n"
@@ -167,7 +167,7 @@ UniValue masternode(const UniValue& params, bool fHelp)
             "  debug        - Print masternode status\n"
             "  genkey       - Generate new masternodeprivkey\n"
             "  outputs      - Print masternode compatible outputs\n"
-            "  start        - Start masternode configured in zeon.conf\n"
+            "  start        - Start masternode configured in xdna.conf\n"
             "  start-alias  - Start single masternode by assigned alias configured in masternode.conf\n"
             "  start-<mode> - Start masternodes configured in masternode.conf (<mode>: 'all', 'missing', 'disabled')\n"
             "  status       - Print masternode status information\n"
@@ -506,45 +506,33 @@ UniValue masternodecurrent (const UniValue& params, bool fHelp)
     if (fHelp || (params.size() != 0))
         throw runtime_error(
             "masternodecurrent\n"
-            "\nGet current masternode winners\n"
+            "\nGet current masternode winner\n"
 
             "\nResult:\n"
-            "[\n"
-            "  {\n"
-            "    \"level\": xxxx,         (numeric) MN level\n"
-            "    \"protocol\": xxxx,      (numeric) Protocol version\n"
-            "    \"txhash\": \"xxxx\",    (string)  Collateral transaction hash\n"
-            "    \"pubkey\": \"xxxx\",    (string)  MN Public key\n"
-            "    \"lastseen\": xxx,       (numeric) Time since epoch of last seen\n"
-            "    \"activeseconds\": xxx,  (numeric) Seconds MN has been active\n"
-            "  },\n"
-            "  ...\n"
-            "]\n"
+            "{\n"
+            "  \"protocol\": xxxx,        (numeric) Protocol version\n"
+            "  \"txhash\": \"xxxx\",      (string) Collateral transaction hash\n"
+            "  \"pubkey\": \"xxxx\",      (string) MN Public key\n"
+            "  \"lastseen\": xxx,       (numeric) Time since epoch of last seen\n"
+            "  \"activeseconds\": xxx,  (numeric) Seconds MN has been active\n"
+            "}\n"
             "\nExamples:\n" +
             HelpExampleCli("masternodecurrent", "") + HelpExampleRpc("masternodecurrent", ""));
 
-    UniValue result{UniValue::VARR};
-
-    for(unsigned l = CMasternode::LevelValue::MIN; l <= CMasternode::LevelValue::MAX; ++l) {
-
-        CMasternode* winner = mnodeman.GetCurrentMasterNode(l, 1);
-
-        if(!winner)
-            continue;
-
+    //fixme: GetCurrentMasterNode add MN level
+    CMasternode* winner = mnodeman.GetCurrentMasterNode(CMasternode::LevelValue::UNSPECIFIED, 1);
+    if (winner) {
         UniValue obj(UniValue::VOBJ);
 
-        obj.push_back(Pair("level", winner->Level()));
         obj.push_back(Pair("protocol", (int64_t)winner->protocolVersion));
         obj.push_back(Pair("txhash", winner->vin.prevout.hash.ToString()));
         obj.push_back(Pair("pubkey", CBitcoinAddress(winner->pubKeyCollateralAddress.GetID()).ToString()));
         obj.push_back(Pair("lastseen", (winner->lastPing == CMasternodePing()) ? winner->sigTime : (int64_t)winner->lastPing.sigTime));
         obj.push_back(Pair("activeseconds", (winner->lastPing == CMasternodePing()) ? 0 : (int64_t)(winner->lastPing.sigTime - winner->sigTime)));
-
-        result.push_back(obj);
+        return obj;
     }
 
-    return result;
+    throw runtime_error("unknown");
 }
 
 UniValue masternodedebug (const UniValue& params, bool fHelp)
