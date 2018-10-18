@@ -3536,8 +3536,8 @@ https://www.transifex.com/zeon-project/zeon-project-translations</translation>
         <translation>Você deve especificar uma masternodeprivkey na configuração. Favor verificar o manual para obter ajuda.</translation>
     </message>
     <message>
-        <source>(42222 could be used only on mainnet)</source>
-        <translation>(42222 could be used only on mainnet)</translation>
+        <source>(32222 could be used only on mainnet)</source>
+        <translation>(32222 could be used only on mainnet)</translation>
     </message>
     <message>
         <source>(default: %s)</source>
@@ -3548,8 +3548,8 @@ https://www.transifex.com/zeon-project/zeon-project-translations</translation>
         <translation>(padrão: 1)</translation>
     </message>
     <message>
-        <source>(must be 42222 for mainnet)</source>
-        <translation>(deve ser 42222 para mainnet)</translation>
+        <source>(must be 32222 for mainnet)</source>
+        <translation>(deve ser 32222 para mainnet)</translation>
     </message>
     <message>
         <source>Accept connections from outside (default: 1 if no -proxy or -connect)</source>

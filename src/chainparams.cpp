@@ -141,12 +141,12 @@ public:
         pchMessageStart[1] = 0x41;
         pchMessageStart[2] = 0x2a;
         pchMessageStart[3] = 0x3f;
-        vAlertPubKey = ParseHex("042FDFF90DF0A586E5DACB07F1550881D4A6F1A9AE0BB9DE549DE0A39A306527CF389A9675E624C7D575BD7A5DE6C72C830AA79762BF57D60904D2C1F9D1214D20");
-        vZEONDevKey  = ParseHex("023db1444cb3658c1f8edf5b3914c63861631211b7172757df08785396b3de12af"); // TEAMPubKey for fees
-        vZEONFundKey = ParseHex("02d9153958bf7540bdb8ed8f679e66d12d228fe86b62d0fdbfc627fdc69e8b366e"); // FUNDPubKey for fees
+        vAlertPubKey = ParseHex("03d46bf8a58d40cf3fbe64768871e877f51b0ebb103b42753b692bd2242181edff");
+        vZEONDevKey  = ParseHex("02e5b0540fb9b38e9b425bbf08fee3108211e4c0c263bf1ff0835fa4b3998ff72f"); // TEAMPubKey for fees
+        vZEONFundKey = ParseHex("03b8929ad30db22162ba66ef85c36904062559c0e2b785344ce9588dbc84fdafda"); // FUNDPubKey for fees
         nDevFee = 1; // TEAMFee %
         nFundFee = 2; // FUNDFee %
-        nDefaultPort = 42222;
+        nDefaultPort = 32222;
         bnProofOfWorkLimit = ~uint256(0) >> 20;
         bnStartWork = ~uint256(0) >> 24;
 
@@ -186,30 +186,30 @@ public:
         nLastPOWBlock = 777000;
         nModifierUpdateBlock = std::numeric_limits<decltype(nModifierUpdateBlock)>::max();
 
-        const char* pszTimestamp = "What is the unix time stamp? 2018-09-30";
+        const char* pszTimestamp = "Un problème sans solution est un problème mal posé. 18 Octobre 2018  ";
         CMutableTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
         txNew.vin[0].scriptSig = CScript() << 486604799 << CScriptNum(4) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
         txNew.vout[0].nValue = 50 * COIN;
-        txNew.vout[0].scriptPubKey = CScript() << ParseHex("047601fdaf49621e1c2ae88272c8cf8367d783d44584ef5b029161a741ece7476f15457a410080d0b454e3033f6db0487bd368d663d0333a57312da17855287863") << OP_CHECKSIG;
+        txNew.vout[0].scriptPubKey = CScript() << ParseHex("02d7ded6adf08e1bda52cf7b3e8cbb65430263b4a59658cc510fa93abbf9efb174") << OP_CHECKSIG;
         genesis.vtx.push_back(txNew);
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
-        genesis.nTime = 1538280876;
+        genesis.nTime = 1539864813;
         genesis.nBits = 0x1e0ffff0;
-        genesis.nNonce = 2879373;
+        genesis.nNonce = 3331086;
 
         //MineGenesis(genesis);
-        // std::cout << genesis.ToString() << std::endl;
+        //std::cout << genesis.ToString() << std::endl;
 
 	hashGenesisBlock = genesis.GetHash();
 
-        assert(hashGenesisBlock == uint256("00000e8bbfd03acdabe8024130b7d6e7aabf9f9bfab8ec1d187befbbc8cb3225"));
-        assert(genesis.hashMerkleRoot == uint256("229397f8dfa59e9bd89f462389fbef412773ab119d43093db540881b4dd8178e"));
+        assert(hashGenesisBlock == uint256("00000c9c83e5970601b5af203855c305a7e426deb667e6a8b3d1e1f66b52d220"));
+        assert(genesis.hashMerkleRoot == uint256("151b932122b02e10a3f3689cbe07114cd5a4dfe37ec21e3540b614ca42b765e5"));
 
-        vSeeds.push_back(CDNSSeedData("zeonnetwork.org", "seednode1.zeonnetwork.org"));     // Primary DNS Seeder
+        //vSeeds.push_back(CDNSSeedData("zeonnetwork.org", "seednode1.zeonnetwork.org"));     // Primary DNS Seeder
 	vSeeds.push_back(CDNSSeedData("Sn1", "18.224.69.185"));                   // Single Node
 	vSeeds.push_back(CDNSSeedData("Sn2", "45.77.137.85"));                   // Single Node
        // vSeeds.push_back(CDNSSeedData("zeonnetwork.org", "seednode3.zeonnetwork.org"));
@@ -235,9 +235,9 @@ public:
         fHeadersFirstSyncingActive = false;
 
         nPoolMaxTransactions = 3;
-        strSporkKey = "032a156379c7cfac15c6314669612abb06171f6139a1cbdb79cb725fe3e9881309";
-        strObfuscationPoolDummyAddress = "ZY6G2GGxSeshTD2HZMd43ygsMoRnW7bMEr";
-        nStartMasternodePayments = 1538280876;
+        strSporkKey = "03f73656970ab44ba1ae5ac19dacc8265c1e3871800a8c106caec502fcb570154f";
+        strObfuscationPoolDummyAddress = "ZG4Z9Jo6te9tQgkKSgEjWpw2FvUQPNpwas";
+        nStartMasternodePayments = 1540036801;
     }
 
     const Checkpoints::CCheckpointData& Checkpoints() const
@@ -285,7 +285,7 @@ public:
         assert(subsidySwitchPoints.size());
 
         vAlertPubKey = ParseHex("040E40B05431EC1E5599E6F7142B83C3B3C2B344FFFCD723B563CE186686FBDCBB0EC0802301B2A4CAEA8D5C1BB42320E3A9A1BA87D6CD598953CB586291362EDA");
-        nDefaultPort = 52222;
+        nDefaultPort = 62222;
         nEnforceBlockUpgradeMajority = 51;
         nRejectBlockOutdatedMajority = 75;
         nToCheckBlockUpgradeMajority = 100;
@@ -300,20 +300,24 @@ public:
 
         //! Modify the testnet genesis block so the timestamp is valid for a later start.
         genesis.nTime = 1538282034;
-        genesis.nNonce = 669087;
+        genesis.nNonce = 1322792;
 
 	//MineGenesis(genesis);
         //std::cout << genesis.ToString() << std::endl;
 
         hashGenesisBlock = genesis.GetHash();
 
-        assert(hashGenesisBlock == uint256("00000fd709f7dff6a31703478e3f6aa277378f3cdf449a6c7b6e2d1125ae328e"));
+        assert(hashGenesisBlock == uint256("0000041e97aa33a01ab8ef35eac5c6b985d64a2bb3b7fcdf7c3b16c157a7cac3"));
+        assert(genesis.hashMerkleRoot == uint256("151b932122b02e10a3f3689cbe07114cd5a4dfe37ec21e3540b614ca42b765e5"));
+
+ 
+
 
         vFixedSeeds.clear();
         vSeeds.clear();
-        vSeeds.push_back(CDNSSeedData("zeonnetwork.org", "seednode1.zeonnetwork.org"));     // Primary DNS Seeder
-	vSeeds.push_back(CDNSSeedData("zeonnetwork.org", "seednode2.zeonnetwork.org"));
-        vSeeds.push_back(CDNSSeedData("zeonnetwork.org", "seednode3.zeonnetwork.org"));
+        //vSeeds.push_back(CDNSSeedData("zeonnetwork.org", "seednode1.zeonnetwork.org"));     // Primary DNS Seeder
+	//vSeeds.push_back(CDNSSeedData("zeonnetwork.org", "seednode2.zeonnetwork.org"));
+        //vSeeds.push_back(CDNSSeedData("zeonnetwork.org", "seednode3.zeonnetwork.org"));
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 128); // Testnet ZEON addresses start with 't'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 11);  
@@ -390,15 +394,15 @@ public:
         bnProofOfWorkLimit = ~uint256(0) >> 1;
         genesis.nTime = 1538282407;
         genesis.nBits = 0x207fffff;
-        genesis.nNonce = 4715962;
+        genesis.nNonce = 5124261;
 
         hashGenesisBlock = genesis.GetHash();
-        nDefaultPort = 62222;
+        nDefaultPort = 73222;
 
        //MineGenesis(genesis);
-       // std::cout << genesis.ToString() << std::endl;
+       //std::cout << genesis.ToString() << std::endl;
 
-        assert(hashGenesisBlock == uint256("00000caa2d8d5ce69b67d5bdb28379401816346ca7ca6180ebdb3a299a5bd4d2"));
+        assert(hashGenesisBlock == uint256("0000020a14a444d7b7ac0276655497b449e175c1912d16c72cf7302482a6cfdf"));
 
         vFixedSeeds.clear(); //! Testnet mode doesn't have any fixed seeds.
         vSeeds.clear();      //! Testnet mode doesn't have any DNS seeds.
