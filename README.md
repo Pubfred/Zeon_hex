@@ -76,3 +76,11 @@ Feel free to download release here :
 
 ![Screenshot](Masternode_reward.png)
 
+
+### Status 21 October 
+
+![Screenshot](Status_21_10_2018.png)
+
+
+
+
