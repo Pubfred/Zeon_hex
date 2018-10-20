@@ -65,4 +65,6 @@ Feel free to download release here :
 
 ![Screenshot](ecran2.png)
 
+### POW block reward distribution
 
+![Screenshot](Pow_distribution.png)
