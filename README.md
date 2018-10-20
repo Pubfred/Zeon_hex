@@ -58,7 +58,8 @@ If you like our Idea, feel free to contact us and work with us.
 <tr><th>14</th><th>6100</th><th>95</th></tr>
 <tr><th>15</th><th>9870</th><th>109</th></tr>
 </table>
-# Zeon_hex
+
+### Zeon_hex
 
 Feel free to download release here : 
 [https://github.com/Pubfred/Zeon_hex](https://github.com/Pubfred/Zeon_hex)
@@ -68,3 +69,10 @@ Feel free to download release here :
 ### POW block reward distribution
 
 ![Screenshot](Pow_distribution.png)
+
+
+### Masternode 3 levels 
+
+
+![Screenshot](Masternode_reward.png)
+
