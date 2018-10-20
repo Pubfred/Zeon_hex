@@ -66,6 +66,13 @@ Feel free to download release here :
 
 ![Screenshot](ecran2.png)
 
+
+### Explorer include in wallet 
+
+
+![Screenshot](zeon_explorer.png)
+
+
 ### POW block reward distribution
 
 ![Screenshot](Pow_distribution.png)
