@@ -15,7 +15,12 @@ More information at [https://pubfred.github.io/Zeon_hex/](https://pubfred.github
 If you like our Idea, feel free to contact us and work with us. 
 
 
+
+
 ### Coin Specs
+
+![Screenshot](zeon_distribution.png)
+
 
 <table>
 <tr><td>Name & ticker</td><td> Zeon (ZEON)</td></tr>
