@@ -98,6 +98,6 @@ Feel free to download release here :
 
 ![Screenshot](Status_21_10_2018.png)
 
-
-
+### Status 21 October 5 PM
+![Screenshot](png/Status_21_10_17h.png)
 
