@@ -59,9 +59,8 @@ If you like our Idea, feel free to contact us and work with us.
 <tr><th>15</th><th>9870</th><th>109</th></tr>
 </table>
 
-<table>
-<tr><th> ![Screenshot](network-hashrate.png)   </th><th> ![Screenshot](blockreward.png)  </th></tr>
-</table>
+ ![Screenshot](network-hashrate.png)    ![Screenshot](blockreward.png)  
+
 
 
 
