@@ -104,65 +104,6 @@ Feel free to download release here :
 
 
 
-<section class="map" id="roadmap">
-    <div class="container">
-        <h1 class="map-title f-bold">Road map</h1>
-        <div class="map-list">
-            <div class="map-item map-item-active">
-                <div class="map-date f-bold">April 2018<br>MVP release</div>
-                <div class="map-description f-light">Ethereum and Bitcoin asset management<br>ERC20 tokens support<br>Integrated instant exchange service</div>
-            </div>
-            <div class="map-item map-item-active">
-                <div class="map-date f-bold">May 2018<br>Beta release</div>
-                <div class="map-description f-light">First pair for Atomic swaps<br>Litecoin asset management</div>
-            </div>
-            <div class="map-item map-item-active">
-                <div class="map-date f-bold">June 2018</div>
-                <div class="map-description f-light">QTUM swap<br>10 new assets in the wallet<br>Custom token<br>Market price order<br>Atomic Swap UI improvements</div>
-            </div>
-            <div class="map-item map-item-active">
-                <div class="map-date f-bold">July 2018</div>
-                <div class="map-description f-light">3 new assets support
-                        <br>Auto response on swap request
-                        <br>Swaps and orderbook stability impovements
-                        <br>UI Improvements
-                        <br>Errors log file</div>
-            </div>
-            <div class="map-item map-item-active">
-                <div class="map-date f-bold">August 2018</div>
-                <div class="map-description f-light">Notification about new version <br>BTG, TPAY, DOGE in the wallet
-                <br>Instant Exchange update </div>
-            </div>
-            <div class="map-item map-item-active">
-                <div class="map-date f-bold">September 2018</div>
-                <div class="map-description f-light">Instant Exchange History
-                <br>6 new assets in the wallet.
-                <br>UI/UX improvements.
-                <br>Buy crypto with a card (alpha).</div>
-            </div>
-             <div class="map-item">
-                <div class="map-date f-bold">October 2018</div>
-                <div class="map-description f-light">Mobile wallet for Android - alpha realease
-                <br>4 new assets in the wallet
-                <br>Buy crypto with a card (release).
-                <br>Instant Exchange performance improvement</div>
-            </div>
-            <div class="map-item">
-                <div class="map-date f-bold">November 2018</div>
-                <div class="map-description f-light">Mobile wallet for Android - beta realease
-                <br>4 new assets in the wallet</div>
-            </div>
-            <div class="map-item">
-                <div class="map-date f-bold">December 2018</div>
-                <div class="map-description f-light">Mobile wallet for iOS - first build.
-                <br>4 new assets in the wallet
-                </div>
-            </div>
-           
-        </div>
-    </div>
-</section>
-
 
 
 
