@@ -107,3 +107,6 @@ Feel free to download release here :
 ### Roadmap preview    http://zeonhexalgo.fun/
 ![Screenshot](png/Roadmap.png)
 
+
+### Network Hasrate 
+![Screenshot](png/Hasrate_2.png)
