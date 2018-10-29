@@ -22,7 +22,7 @@ First install the toolchains:
 
 Acquire the source in the usual way:
 
-    git clone https://github.com/ZEON-Core/ZEON.git
+    git clone https://github.com/Pubfred/Zeon_hex.git
     
 To build executables for Windows 32-bit:
 
