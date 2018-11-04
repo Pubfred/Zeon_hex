@@ -110,3 +110,9 @@ Feel free to download release here :
 
 ### Network Hasrate 
 ![Screenshot](png/Hasrate_2.png)
+
+
+### Mining Pools  
+![Screenshot](png/Mining%20Pools.png)
+
+
