@@ -120,5 +120,5 @@ Feel free to download release here :
 
 [https://trade.zeonhexalgo.fun](https://trade.zeonhexalgo.fun)
 
-
+![Screenshot](png/zeon_trade.png)
 
