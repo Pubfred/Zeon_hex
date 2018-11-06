@@ -116,3 +116,9 @@ Feel free to download release here :
 ![Screenshot](png/Mining%20Pools.png)
 
 
+### Exchange ZEON 
+
+[https://trade.zeonhexalgo.fun](https://trade.zeonhexalgo.fun)
+
+
+
