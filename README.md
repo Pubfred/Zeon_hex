@@ -123,7 +123,7 @@ Feel free to download release here :
 ![Screenshot](png/Zeon_trade2.png)
 
 
-https://www.finexbox.com/Home/Orders/market/pair/ZEON-BTC.htm
+https://www.finexbox.com/Home/Orders/market/pair/ZEON-BTC
 
 ![Screenshot](png/finexbox.png)
 
