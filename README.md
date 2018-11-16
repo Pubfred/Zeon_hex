@@ -132,3 +132,9 @@ https://www.finexbox.com/Home/Orders/market/pair/ZEON-BTC
 https://pluxexchange.online/?ref=13
 
 ![Screenshot](png/Dr6vVLjX4AAPCJV.jpg)
+
+
+[https://tradebtc.zeonhexalgo.fun](https://tradebtc.zeonhexalgo.fun)
+
+![Screenshot](png/Zeon_trade2.png)
+
