@@ -123,13 +123,13 @@ Feel free to download release here :
 ![Screenshot](png/Zeon_trade2.png)
 
 
-https://www.finexbox.com/Home/Orders/market/pair/ZEON-BTC
+[https://www.finexbox.com/Home/Orders/market/pair/ZEON-BTC](https://www.finexbox.com/Home/Orders/market/pair/ZEON-BTC)
 
 ![Screenshot](png/finexbox.png)
 
 
 
-https://pluxexchange.online/?ref=13
+[https://pluxexchange.online/?ref=13](https://pluxexchange.online/?ref=13)
 
 ![Screenshot](png/Dr6vVLjX4AAPCJV.jpg)
 
