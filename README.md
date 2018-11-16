@@ -136,5 +136,5 @@ https://pluxexchange.online/?ref=13
 
 [https://tradebtc.zeonhexalgo.fun](https://tradebtc.zeonhexalgo.fun)
 
-![Screenshot](png/Zeon_trade2.png)
+![Screenshot](png/Zeon_trade1.png)
 
