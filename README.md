@@ -112,8 +112,14 @@ Feel free to download release here :
 ![Screenshot](png/Hasrate_2.png)
 
 
-### Mining Pools  
+### Mining Pools Stats  
+[https://poolexplorer.com/coin/5557](https://poolexplorer.com/coin/5557)
 ![Screenshot](png/Mining%20Pools.png)
+
+
+[https://miningpoolstats.stream/zeon](https://miningpoolstats.stream/zeon)
+![Screenshot](png/miningpoolstats_2.png)
+
 
 
 ### Exchange ZEON 
