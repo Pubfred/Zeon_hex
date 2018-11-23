@@ -97,9 +97,13 @@ Feel free to download release here :
 
 ### Masternode Host & Share
 
-Host:         https://ihostmn.com/
+Host:         
+https://ihostmn.com/
+
 https://ihostmn.com/hostmn.php?coin=ZEON-1K 
+
 https://ihostmn.com/hostmn.php?coin=ZEON-3K 
+
 https://ihostmn.com/hostmn.php?coin=ZEON-5K 
 
 
