@@ -210,10 +210,8 @@ public:
         assert(genesis.hashMerkleRoot == uint256("151b932122b02e10a3f3689cbe07114cd5a4dfe37ec21e3540b614ca42b765e5"));
 
         vSeeds.push_back(CDNSSeedData("zeonhexalgo.fun", "seednode1.zeonhexalgo.fun"));     // Primary DNS Seeder
-	//vSeeds.push_back(CDNSSeedData("Sn1", "18.224.69.185"));                   // Single Node
-	vSeeds.push_back(CDNSSeedData("Sn2", "45.77.137.85"));                   // Single Node
-       // vSeeds.push_back(CDNSSeedData("zeonnetwork.org", "seednode3.zeonnetwork.org"));
-        
+	// vSeeds.push_back(CDNSSeedData("zeonnetwork.org", "seednode2.zeonnetwork.org"));  // Secondary DNS Seeder 
+         
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 80);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 18);
