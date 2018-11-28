@@ -150,9 +150,13 @@ https://zeonhexalgo.fun/roadmap.html
 
 
 
+
+
  [https://openexchange24.com/market/BTC-ZEON?ref=3](https://openexchange24.com/market/BTC-ZEON)
 
  An Exchange and Autoexchnage for Miners on https://www.nlpool.nl
+
+![Screenshot](https://nlpool.nl/images/logonlpool.png)
 
 
 [https://tradebtc.zeonhexalgo.fun](https://tradebtc.zeonhexalgo.fun)
