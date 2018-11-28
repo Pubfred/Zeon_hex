@@ -156,7 +156,7 @@ https://zeonhexalgo.fun/roadmap.html
 
  An Exchange and Autoexchnage for Miners on https://www.nlpool.nl
 
-<img src="https://nlpool.nl/images/logonlpool.png" alt="nlpool.nl" width="200" >
+<img src="https://nlpool.nl/images/logonlpool.png" alt="nlpool.nl" width="200" vspace='50' hspace='10' align='left' >
 
 [https://tradebtc.zeonhexalgo.fun](https://tradebtc.zeonhexalgo.fun)
 
