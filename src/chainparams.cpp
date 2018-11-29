@@ -210,8 +210,7 @@ public:
 
         vSeeds.push_back(CDNSSeedData("zeonhexalgo.fun", "seednode1.zeonhexalgo.fun"));     // Primary DNS Seeder
 	vSeeds.push_back(CDNSSeedData("zeonhexalgo.fun", "seednode2.zeonhexalgo.fun"));     // Secondary DNS Seeder 
-         
-
+        
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 80);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 18);
         base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 233);
