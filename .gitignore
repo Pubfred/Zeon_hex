@@ -46,6 +46,7 @@ libtool
 src/config/zeon-config.h
 src/config/zeon-config.h.in
 src/config/stamp-h1
+src/config/zeon-config.h
 share/setup.nsi
 share/qt/Info.plist
 contrib/devtools/split-debug.sh
