@@ -150,9 +150,15 @@ https://zeonhexalgo.fun/roadmap.html
 
 
 
-[https://pluxexchange.online/?ref=13](https://pluxexchange.online/?ref=13)
 
-![Screenshot](png/Dr6vVLjX4AAPCJV.jpg)
+
+ [https://openexchange24.com/market/BTC-ZEON?ref=3](https://openexchange24.com/market/BTC-ZEON)
+
+ An Exchange and Autoexchnage for Miners on https://www.nlpool.nl
+
+<img src="png/logonlpool.png" alt="nlpool.nl" width="200" height='200' >
+
+
 
 
 [https://tradebtc.zeonhexalgo.fun](https://tradebtc.zeonhexalgo.fun)
@@ -170,3 +176,6 @@ https://zeonhexalgo.fun/roadmap.html
 ![Screenshot](png/Main_site2.png)
 
 
+ Main site for ZEON 28 November :
+
+![Screenshot](png/Site_status_2811.png)
