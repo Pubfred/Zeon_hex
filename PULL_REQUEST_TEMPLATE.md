@@ -26,15 +26,15 @@ To help the project's maintainers and community to quickly understand the nature
 
 Please use the checklist that is most closely related to your pr _(you only need to use one checklist, and you can skip items that aren't applicable or don't make sense)_:
 
-- [fixing typos]()
-- [documentation]()
-- [bug fix]()
-- [new feature]()
-- [other]()
+- [fixing typos](#fixing-typos)
+- [documentation](#documentation)
+- [bug fix](#bug-fix)
+- [new feature](#new-feature)
+- [other]
 
 ### Fixing typos
 
-- [ ] Please review the [readme advice]() section before submitting changes
+- [ ] Please review the [readme advice](#readme-advice) section before submitting changes
 - [ ] Add your to the [contributors](#packagejson-contributors) array in package.json!
 
 ### Documentation
