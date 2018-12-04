@@ -179,3 +179,11 @@ https://zeonhexalgo.fun/roadmap.html
  Main site for ZEON 28 November :
 
 ![Screenshot](png/Site_status_2811.png)
+
+
+
+###   ZEON price chart  : 
+
+![Screenshot](png/zeon_price2.png)
+
+
