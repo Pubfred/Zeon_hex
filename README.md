@@ -193,7 +193,3 @@ https://zeonhexalgo.fun/roadmap.html
 
 
 
-<iframe src="https://discordapp.com/widget?id=503796710867206144&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>
-
-
-
