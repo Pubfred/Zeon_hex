@@ -189,6 +189,8 @@ https://zeonhexalgo.fun/roadmap.html
 
 
 
+###   ZEON Tip Bot on discord channel 
+![Screenshot](png/Zeon_tip_bot.png)	
 
 
 
