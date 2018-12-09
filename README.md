@@ -199,5 +199,5 @@ https://zeonhexalgo.fun/roadmap.html
 https://masternode.zeonhexalgo.fun
 
 
-
+![Screenshot](png/Masternode_Info.png)	
 
