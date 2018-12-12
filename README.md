@@ -209,3 +209,13 @@ https://masternode.zeonhexalgo.fun/coininfo
 
 ![Screenshot](png/Zeon_market.png)	
 
+
+###   Zeon on MCT+ Platform   :
+
+https://trade.mct.plus/
+
+You can now exchnage ZEON for 38 Other Cryptos ...
+
+![Screenshot](png/Zeon_MCT.png)	
+
+
