@@ -214,7 +214,7 @@ https://masternode.zeonhexalgo.fun/coininfo
 
 https://trade.mct.plus/
 
-You can now exchnage ZEON for 38 Other Cryptos ...
+You can now exchange ZEON for 38 Other Cryptos ...
 
 ![Screenshot](png/Zeon_MCT.png)	
 
