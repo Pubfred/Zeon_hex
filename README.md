@@ -219,3 +219,16 @@ You can now exchange ZEON for 38 Other Cryptos ...
 ![Screenshot](png/Zeon_MCT.png)	
 
 ![Screenshot](png/MCT_-_ZEON_Listed.png)	
+
+
+###   Zeon seeds 
+
+https://dnschecker.org/#A/dnsseed2.zeonhexalgo.fun
+
+![Screenshot](png/dnsseed2.png)	
+
+
+
+
+
+
