@@ -228,7 +228,11 @@ https://dnschecker.org/#A/dnsseed2.zeonhexalgo.fun
 ![Screenshot](png/dnsseed2.png)	
 
 
+###   Zeon Web Wallet
 
+https://wallet.zeonhexalgo.fun/
+
+![Screenshot](png/Zeon_wallet.png)	
 
 
 
