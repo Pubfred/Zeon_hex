@@ -3109,7 +3109,7 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
     else {
             int nHeight = 0;
             CBlockIndex* pindexPrev = chainActive.Tip();
-            if (pindexPrev == NULL)
+            if (!pindexPrev)
                 nHeight = 0;
             else
                 if (pindexPrev->GetBlockHash() == block.hashPrevBlock)
