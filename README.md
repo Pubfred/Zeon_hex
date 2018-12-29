@@ -234,5 +234,9 @@ https://wallet.zeonhexalgo.fun/
 
 ![Screenshot](png/Zeon_wallet.png)	
 
+###   Masternode Service 
 
+[https://www.nodeasy.com/](https://www.nodeasy.com/)
+
+![Screenshot](png/nodeasy.jpg)	
 
