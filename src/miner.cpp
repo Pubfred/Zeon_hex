@@ -334,7 +334,7 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn, CWallet* pwallet, 
         }
         if (!fProofOfStake)
             UpdateTime(pblock, pindexPrev);
-        CAmount block_value = GetBlockValue(nHeight - 1, pblock->nTime);
+        CAmount block_value = GetBlockValue(nHeight , pblock->nTime);
 
         txNew.vin[0].scriptSig = CScript() << nHeight << OP_0;
 
@@ -389,7 +389,7 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn, CWallet* pwallet, 
         if (!TestBlockValidity(state, *pblock, pindexPrev, false, false)) {
             LogPrintf("CreateNewBlock() : TestBlockValidity failed\n");
             mempool.clear();
-            return NULL;
+            return nullptr;
         }
     }
 

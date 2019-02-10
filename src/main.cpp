@@ -3,7 +3,6 @@
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2017 The PIVX developers
 // Copyright (c) 2018-2019 The ZEON Core developers
-// Copyright (c) 2018-2018 The ZEON Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -1620,9 +1619,9 @@ double ConvertBitsToDouble(unsigned int nBits)
 
 CAmount GetBlockValue(int nHeight, uint32_t nTime)
 {
-    if (nHeight == 0) {
+    if (nHeight == 1) {
         return 400000 * COIN;
-    } else if (nHeight < Params().ANTI_INSTAMINE_TIME()) {
+    } else if (nHeight <= Params().ANTI_INSTAMINE_TIME()) {
         return 1 * COIN;
 
       // POS Year 1
@@ -2192,7 +2191,7 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
     LogPrint("bench", "      - Connect %u transactions: %.2fms (%.3fms/tx, %.3fms/txin) [%.2fs]\n", (unsigned)block.vtx.size(), 0.001 * (nTime1 - nTimeStart), 0.001 * (nTime1 - nTimeStart) / block.vtx.size(), nInputs <= 1 ? 0 : 0.001 * (nTime1 - nTimeStart) / (nInputs - 1), nTimeConnect * 0.000001);
 
     //PoW phase redistributed fees to miner. PoS stage destroys fees.
-    CAmount nExpectedMint = GetBlockValue(pindex->pprev->nHeight, block.nTime);
+    CAmount nExpectedMint = GetBlockValue(pindex->pprev->nHeight + 1, block.nTime);
     if (block.IsProofOfWork())
         nExpectedMint += nFees;
 
@@ -3110,7 +3109,7 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
     else {
             int nHeight = 0;
             CBlockIndex* pindexPrev = chainActive.Tip();
-            if (pindexPrev == NULL)
+            if (!pindexPrev)
                 nHeight = 0;
             else
                 if (pindexPrev->GetBlockHash() == block.hashPrevBlock)
@@ -3584,7 +3583,7 @@ bool ProcessNewBlock(CValidationState& state, CNode* pfrom, CBlock* pblock, CDis
     if (!fLiteMode) {
         if (masternodeSync.RequestedMasternodeAssets > MASTERNODE_SYNC_LIST) {
             obfuScationPool.NewBlock();
-	    masternodePayments.ProcessBlock(GetHeight() + 10 );
+	    masternodePayments.ProcessBlock(GetHeight());
         }
     }
 
