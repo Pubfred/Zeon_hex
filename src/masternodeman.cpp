@@ -461,7 +461,7 @@ unsigned CMasternodeMan::CountEnabled(unsigned mnlevel, int protocolVersion)
     });
 }
 
-std::map<unsigned, int> CMasternodeMan::CountEnabledByLevels(int protocolVersion)
+std::map<unsigned, unsigned> CMasternodeMan::CountEnabledByLevels(int protocolVersion)
 {
     if(protocolVersion == -1)
         protocolVersion = masternodePayments.GetMinMasternodePaymentsProto();
