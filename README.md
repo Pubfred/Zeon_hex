@@ -240,3 +240,14 @@ https://wallet.zeonhexalgo.fun/
 
 ![Screenshot](png/nodeasy.jpg)	
 
+
+###   Discord Bot Stats 
+
+[https://discord.gg/xNQ3mQ9](https://discord.gg/xNQ3mQ9)
+
+
+
+
+
+
+
