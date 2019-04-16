@@ -248,7 +248,7 @@ https://wallet.zeonhexalgo.fun/
 
 ![Screenshot](https://pbs.twimg.com/media/D4MX9dVW0AAuQT5.png)	
 
-## ZEON earnings level3
+# ZEON earnings level3
 %earnings3
 
 ![Screenshot](https://pbs.twimg.com/media/D4LbYu8XsAAVR8_.png)	
