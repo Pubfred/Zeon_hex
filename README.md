@@ -246,7 +246,7 @@ https://wallet.zeonhexalgo.fun/
 [https://discord.gg/xNQ3mQ9](https://discord.gg/xNQ3mQ9)
 
 
-
+![Screenshot](https://pbs.twimg.com/media/D4MX9dVW0AAuQT5.png)	
 
 
 
