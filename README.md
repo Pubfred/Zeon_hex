@@ -256,6 +256,11 @@ https://wallet.zeonhexalgo.fun/
 
 ###   Markets 
 
+
+[https://www.finexbox.com/market/pair/ZEON-BTC.html](https://www.finexbox.com/market/pair/ZEON-BTC.html)
+
+![Screenshot](png/Dre1iY6WkAIbfeJ.jpg)	
+
 [https://altmarkets.io/trading/zeonbtc](https://altmarkets.io/trading/zeonbtc)
 
 ![Screenshot](png/D4X5pqfWwAEwDSq.png)	
