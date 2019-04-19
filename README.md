@@ -255,14 +255,16 @@ https://wallet.zeonhexalgo.fun/
 
 
 ###   Markets 
-AltMarkets Exchange
 
 [https://altmarkets.io/trading/zeonbtc](https://altmarkets.io/trading/zeonbtc)
-![Screenshot](png/D4OUE2uWAAAKQEY.png)	
+
+![Screenshot](png/D4X5pqfWwAEwDSq.png)	
 
 BTC , LTC and BTCZ  pairs  on 
+
 [ https://cratex.io]( https://cratex.io)
-![Screenshot](png/D4X5pqfWwAEwDSq.png)	
+
+![Screenshot](png/D4OUE2uWAAAKQEY.png)	
 
 
 
