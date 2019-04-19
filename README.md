@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/ZEONNetwork/zeon.svg?branch=master)](https://travis-ci.org/ZEONNetwork/zeon)
 
 
-![Screenshot](zeon.png)                ![Screenshot](png/zeon_logo_circle.png)	
+![Screenshot](png/zeon.png)                ![Screenshot](png/zeon_logo_circle.png)	
 
 
 
