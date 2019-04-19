@@ -355,15 +355,15 @@ void OverviewPage::updatBlockChainInfo()
 
     int CurrentBlock = chainActive.Height();
     int64_t netHashRate = chainActive.GetNetworkHashPS(24, CurrentBlock);
-    int64_t BlockReward = Params().SubsidyValue(netHashRate, tip_time, CurrentBlock);
-    double BlockRewardZEON =  static_cast<double>(BlockReward/static_cast<double>(COIN);
+    int64_t BlockReward = Params().SubsidyValue(netHashRate, tip_time);
+    double BlockRewardZEON =  static_cast<double>(BlockReward)/static_cast<double>(COIN);
     //int64_t ZEONSupply = chainActive.Tip()->nMoneySupply / COIN;
 
     ui->label_CurrentBlock_value->setText(QString::number(CurrentBlock));
 
     int BitGunLevel = 0;
 
-    for(const auto& it : Params().GetSubsidySwitchPoints(tip_time, CurrentBlock))
+    for(const auto& it : Params().GetSubsidySwitchPoints(tip_time))
     {
         BitGunLevel++;
 

@@ -1919,7 +1919,7 @@ bool CWallet::SelectCoinsDark(CAmount nValueMin, CAmount nValueMax, std::vector<
     nValueRet = 0;
 
     vector<COutput> vCoins;
-    AvailableCoins(vCoins, true, coinControl, nObfuscationRoundsMin < 0 ? ONLY_NONDENOMINATED_NOTDEPOSITIFMN : ONLY_DENOMINATED);
+    AvailableCoins(vCoins, true, coinControl, ((nObfuscationRoundsMin < 0 ) ? ONLY_NONDENOMINATED_NOTDEPOSITIFMN : ONLY_DENOMINATED));
 
     set<pair<const CWalletTx*, unsigned int> > setCoinsRet2;
 
@@ -2449,7 +2449,7 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, uint32_t nTime, unsigne
     nCredit += GetBlockValue(pIndex0->nHeight + 1, nTime);
 
     //presstab HyperStake - calculate the total size of our new output including the stake reward so that we can use it to decide whether to split the stake outputs
-    if (nCredit / 2 > nStakeSplitThreshold * COIN) {
+    if (nCredit / 2 > (int)nStakeSplitThreshold * COIN) {
         txNew.vout[1].nValue = (nCredit / 2 / CENT) * CENT;
         txNew.vout.push_back(CTxOut(nCredit - txNew.vout[1].nValue, txNew.vout[1].scriptPubKey));
     } else {

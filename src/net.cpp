@@ -1000,7 +1000,7 @@ void ThreadMapPort()
     struct UPNPDev* devlist = 0;
     char lanaddr[64];
 
-#ifndef UPNPDISCOVER_SZEONESS
+#ifndef UPNPDISCOVER_SUCCESS
     /* miniupnpc 1.5 */
     devlist = upnpDiscover(2000, multicastif, minissdpdpath, 0);
 #elif MINIUPNPC_API_VERSION < 14
@@ -1037,7 +1037,7 @@ void ThreadMapPort()
 
         try {
             while (true) {
-#ifndef UPNPDISCOVER_SZEONESS
+#ifndef UPNPDISCOVER_SUCCESS
                 /* miniupnpc 1.5 */
                 r = UPNP_AddPortMapping(urls.controlURL, data.first.servicetype,
                     port.c_str(), port.c_str(), lanaddr, strDesc.c_str(), "TCP", 0);

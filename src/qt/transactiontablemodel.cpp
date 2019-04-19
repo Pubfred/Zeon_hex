@@ -417,11 +417,14 @@ QVariant TransactionTableModel::addressColor(const TransactionRecord* wtx) const
     case TransactionRecord::RecvWithAddress:
     case TransactionRecord::SendToAddress:
     case TransactionRecord::Generated:
+    __attribute__ ((fallthrough));
     case TransactionRecord::MNReward: {
         QString label = walletModel->getAddressTableModel()->labelForAddress(QString::fromStdString(wtx->address));
-        if (label.isEmpty())
-            return COLOR_BAREADDRESS;
+        if (label.isEmpty()) {
+           return COLOR_BAREADDRESS;
+        }
     }
+    __attribute__ ((fallthrough));
     default:
         // To avoid overriding above conditional formats a default text color for this QTableView is not defined in stylesheet,
         // so we must always return a color here
