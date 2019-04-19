@@ -20,7 +20,7 @@ If you like our Idea, feel free to contact us and work with us.
 
 ### Coin Specs
 
-![Screenshot](zeon_distribution.png)
+![Screenshot](png/zeon_distribution.png)
 
 
 <table>
@@ -76,24 +76,24 @@ If you like our Idea, feel free to contact us and work with us.
 Feel free to download release here : 
 [https://github.com/Pubfred/Zeon_hex](https://github.com/Pubfred/Zeon_hex)
 
-![Screenshot](ecran2.png)
+![Screenshot](png/ecran2.png)
 
 
 ### Explorer include in wallet 
 
 
-![Screenshot](zeon_explorer.png)
+![Screenshot](png/zeon_explorer.png)
 
 
 ### POW block reward distribution
 
-![Screenshot](Pow_distribution.png)
+![Screenshot](png/Pow_distribution.png)
 
 
 ### Masternode 3 levels 
 
 
-![Screenshot](Masternode_reward.png)
+![Screenshot](png/Masternode_reward.png)
 
 
 ### Masternode Host & Share
@@ -111,7 +111,7 @@ https://ihostmn.com/hostmn.php?coin=ZEON-5K
 
 ### Status 21 October 
 
-![Screenshot](Status_21_10_2018.png)
+![Screenshot](png/Status_21_10_2018.png)
 
 ### Status 23 November 12 AM
 ![Screenshot](png/Status_23_11_12h.png)
