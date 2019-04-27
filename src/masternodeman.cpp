@@ -642,7 +642,7 @@ CMasternode* CMasternodeMan::GetNextMasternodeInQueueForPayment(int nBlockHeight
             continue;
 
         //make sure it has as many confirmations as there are masternodes
-        if (mn.GetMasternodeInputAge() < nMnCount)
+        if ((int)mn.GetMasternodeInputAge() < (int)nMnCount)
             continue;
 
         vecMasternodeLastPaid.emplace_back(mn.SecondsSincePayment(), mn.vin);

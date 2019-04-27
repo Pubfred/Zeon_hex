@@ -653,8 +653,14 @@ void CMasternodePayments::Sync(CNode* node, int nCountNeeded)
 
     auto mn_counts = mnodeman.CountEnabledByLevels();
 
+    unsigned max_mn_count = 0u;
+
     for(auto& count : mn_counts)
-        count.second = std::min(nCountNeeded,(int) ( count.second / 100 * 125));
+        max_mn_count = std::max(max_mn_count, count.second * 125 / 100);
+
+    if((int)max_mn_count > nCountNeeded)
+        max_mn_count = nCountNeeded;
+
 
     int nInvCount = 0;
 
@@ -662,7 +668,7 @@ void CMasternodePayments::Sync(CNode* node, int nCountNeeded)
 
         const auto& winner = vote.second;
 
-        bool push =  winner.nBlockHeight >= nHeight - mn_counts[winner.payeeLevel]
+        bool push =  winner.nBlockHeight >= nHeight - (int)max_mn_count
                   && winner.nBlockHeight <= nHeight + 20;
 
         if(!push)

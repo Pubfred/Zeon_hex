@@ -503,8 +503,9 @@ UniValue getmasternodecount (const UniValue& params, bool fHelp)
 
 UniValue masternodecurrent (const UniValue& params, bool fHelp)
 {
-    if (fHelp || (params.size() != 0))
-        throw runtime_error(
+    if (fHelp || (params.size() != 0)) {
+       
+       throw runtime_error(
             "masternodecurrent\n"
             "\nGet current masternode winners\n"
 
@@ -521,9 +522,10 @@ UniValue masternodecurrent (const UniValue& params, bool fHelp)
             "  ...\n"
             "]\n"
             "\nExamples:\n" +
-            HelpExampleCli("masternodecurrent", "") + HelpExampleRpc("masternodecurrent", ""));
+            HelpExampleCli("masternodecurrent", "") + HelpExampleRpc("masternodecurrent", "")); }
 
-        UniValue result{UniValue::VARR};
+
+    UniValue result{UniValue::VARR};
         for(unsigned l = CMasternode::LevelValue::MIN; l <= CMasternode::LevelValue::MAX; ++l) {
         CMasternode* winner = mnodeman.GetCurrentMasterNode(l, 1);
  

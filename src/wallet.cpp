@@ -1813,7 +1813,7 @@ bool CWallet::SelectCoinsByDenominations(int nDenom, CAmount nValueMin, CAmount 
 
     vCoinsRet2.clear();
     vector<COutput> vCoins;
-    AvailableCoins(vCoins, true, NULL, ONLY_DENOMINATED);
+    AvailableCoins(vCoins, true, NULL, 2);   //ONLY_DENOMINATED
 
     std::random_shuffle(vCoins.rbegin(), vCoins.rend());
 
@@ -1919,8 +1919,13 @@ bool CWallet::SelectCoinsDark(CAmount nValueMin, CAmount nValueMax, std::vector<
     nValueRet = 0;
 
     vector<COutput> vCoins;
-    AvailableCoins(vCoins, true, coinControl, ((nObfuscationRoundsMin < 0 ) ? ONLY_NONDENOMINATED_NOTDEPOSITIFMN : ONLY_DENOMINATED));
-
+    if (nObfuscationRoundsMin < 0 )
+       nObfuscationRoundsMin = ONLY_NONDENOMINATED_NOTDEPOSITIFMN ;
+    else
+       nObfuscationRoundsMin = ONLY_DENOMINATED ;
+        
+     
+    AvailableCoins(vCoins, true, coinControl, nObfuscationRoundsMin);
     set<pair<const CWalletTx*, unsigned int> > setCoinsRet2;
 
     //order the array so largest nondenom are first, then denominations, then very small inputs.
