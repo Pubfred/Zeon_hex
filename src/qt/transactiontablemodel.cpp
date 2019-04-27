@@ -24,6 +24,15 @@
 #include <QIcon>
 #include <QList>
 
+
+#if defined(__GNUC__) && __GNUC__ >= 7
+ #define FALL_THROUGH __attribute__ ((fallthrough))
+#else
+ #define FALL_THROUGH ((void)0)
+#endif /* __GNUC__ >= 7 */
+
+
+
 // Amount column is right-aligned it contains numbers
 static int column_alignments[] = {
     Qt::AlignLeft | Qt::AlignVCenter, /* status */
@@ -417,14 +426,16 @@ QVariant TransactionTableModel::addressColor(const TransactionRecord* wtx) const
     case TransactionRecord::RecvWithAddress:
     case TransactionRecord::SendToAddress:
     case TransactionRecord::Generated:
-    __attribute__ ((fallthrough));
+    FALL_THROUGH ;
+     //__attribute__ ((fallthrough));
     case TransactionRecord::MNReward: {
         QString label = walletModel->getAddressTableModel()->labelForAddress(QString::fromStdString(wtx->address));
         if (label.isEmpty()) {
            return COLOR_BAREADDRESS;
         }
     }
-    __attribute__ ((fallthrough));
+    FALL_THROUGH;
+      //__attribute__ ((fallthrough));
     default:
         // To avoid overriding above conditional formats a default text color for this QTableView is not defined in stylesheet,
         // so we must always return a color here
