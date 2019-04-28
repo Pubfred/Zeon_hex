@@ -6,6 +6,14 @@
 #include "crypto/hmac_sha512.h"
 #include "crypto/scrypt.h"
 
+#if defined(__GNUC__) && __GNUC__ >= 7
+ #define FALL_THROUGH __attribute__ ((fallthrough))
+#else
+ #define FALL_THROUGH ((void)0)
+#endif /* __GNUC__ >= 7 */
+
+
+
 inline uint32_t ROTL32(uint32_t x, int8_t r)
 {
     return (x << r) | (x >> (32 - r));
@@ -46,8 +54,10 @@ unsigned int MurmurHash3(unsigned int nHashSeed, const std::vector<unsigned char
         switch (vDataToHash.size() & 3) {
         case 3:
             k1 ^= tail[2] << 16;
+	    FALL_THROUGH ;
         case 2:
             k1 ^= tail[1] << 8;
+	    FALL_THROUGH ;
         case 1:
             k1 ^= tail[0];
             k1 *= c1;
