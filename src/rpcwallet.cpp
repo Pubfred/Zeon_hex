@@ -2079,15 +2079,10 @@ UniValue getautocombineinfo(const UniValue& params, bool fHelp)
 
 UniValue autocombinerewards(const UniValue& params, bool fHelp)
 {
-    bool fEnable;
+    bool fEnable = false;
     if (params.size() >= 1)
         fEnable = params[0].get_bool();
-    bool fEnable = false;
     
-        if (params.size() >= 1) {
-        fEnable = params[0].get_bool();
-    }
-
     if (fHelp || params.size() < 1 || (fEnable && params.size() < 2) || params.size() > 3)
         throw runtime_error(
             "autocombinerewards enable ( threshold ) ( frequency )\n"
