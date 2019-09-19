@@ -58,10 +58,10 @@ static Checkpoints::MapCheckpoints mapCheckpoints =
 	                      (100000 , uint256("0000000006f19015e71fac6caaf67d9ec6af26ecd3bac221ba8eba9b8a2b0797"))  
  	                      (150000 , uint256("00000000033a6893b908e837315c8997e7df926823b328f58a02ab11f4bda75b"))
                               (200000 , uint256("000000001d9aaebcc38af977bd0ed6f5e4541c497fc92e155a3799fa04aff061"))
-                              (250000 , uint256("00000000470df14b1be08e99503041bd1349adce0407e0ba8e589ff5a3fcc14d"));
-                              (300000 , uint256("0000000019130331ca62754cefb28aba6721a242008c097b6a35613590ee049c"));
-                              (350000 , uint256("000000005170871c3d340a732dec8a614c4dc7d7965b40bf56ae6a2d43bdf890"));
-                              (400000 , uint256("000000002f55568a0698d4cc3baaefc24c7fdcc6f27e48acd29c07eb7071f797"));
+                              (250000 , uint256("00000000470df14b1be08e99503041bd1349adce0407e0ba8e589ff5a3fcc14d"))
+                              (300000 , uint256("0000000019130331ca62754cefb28aba6721a242008c097b6a35613590ee049c"))
+                              (350000 , uint256("000000005170871c3d340a732dec8a614c4dc7d7965b40bf56ae6a2d43bdf890"))
+                              (400000 , uint256("000000002f55568a0698d4cc3baaefc24c7fdcc6f27e48acd29c07eb7071f797"))
                               (450000 , uint256("00000000650903357ae420759311c73ce99510940d8eca397b3d8a3623a7907e")); 
 
 
