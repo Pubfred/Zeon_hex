@@ -230,6 +230,19 @@ bool CWalletDB::WriteAutoCombineSettings(bool fEnable, CAmount nCombineThreshold
     pSettings.first = fEnable;
     pSettings.second = nCombineThreshold;
     return Write(std::string("autocombinesettings"), pSettings, true);
+    // Overwrite the old format with a special flag
+    std::pair<bool, CAmount> pSettingsOld;
+    pSettingsOld.first = fEnable;
+    pSettingsOld.second = -1; // Negatives doesn't make sense, so we can use them as flags
+    if (Write(std::string("autocombinesettings"), pSettingsOld, true)) {
+        // Now add the new format as v2
+        std::pair<bool, CAmount> enabledMS1(fEnable, nCombineThreshold);
+        std::pair<std::pair<bool, CAmount>,int> pSettings(enabledMS1, nBlockFrequency);
+        return Write(std::string("autocombinesettingsV2"), pSettings, true);
+    } else {
+        // report the old format write failed
+        return false;
+    }    	
 }
 
 bool CWalletDB::WriteDefaultKey(const CPubKey& vchPubKey)
