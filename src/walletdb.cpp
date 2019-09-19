@@ -223,7 +223,7 @@ bool CWalletDB::EraseMSDisabledAddresses(std::vector<std::string> vDisabledAddre
     }
     return ret;
 }
-bool CWalletDB::WriteAutoCombineSettings(bool fEnable, CAmount nCombineThreshold)
+bool CWalletDB::WriteAutoCombineSettings(bool fEnable, CAmount nCombineThreshold, int nBlockFrequency)
 {
     nWalletDBUpdated++;
     std::pair<bool, CAmount> pSettings;
