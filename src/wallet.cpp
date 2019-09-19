@@ -3299,68 +3299,112 @@ bool CWallet::GetDestData(const CTxDestination& dest, const std::string& key, st
 
 void CWallet::AutoCombineDust()
 {
-    if (IsInitialBlockDownload() || IsLocked()) {
+    LOCK2(cs_main, cs_wallet);
+    // Stop the old blocks from sending multisends
+    if (chainActive.Tip()->nTime < (GetAdjustedTime() - 300) || IsLocked()) {
         return;
     }
 
+    if (0 != nAutoCombineBlockFrequency) {
+        // If the block height hasn't exceeded our frequency; or is not a multiple of our frequency.
+        if ((nAutoCombineBlockFrequency > chainActive.Tip()->nHeight) || 
+            (chainActive.Tip()->nHeight % nAutoCombineBlockFrequency)) {
+            return;
+        }
+    } else {
+        // If nAutoCombineBlockFrequency is 0, it's the special onetime case
+        // so let it rip but turn it off so it doesn't rip again.
+        fCombineDust = 0;
+    }
+	
     map<CBitcoinAddress, vector<COutput> > mapCoinsByAddress = AvailableCoinsByAddress(true, 0);
 
-    //coins are sectioned by address. This combination code only wants to combine inputs that belong to the same address
+   //coins are sectioned by address. This combination code only wants to combine inputs that belong to the same address
     for (map<CBitcoinAddress, vector<COutput> >::iterator it = mapCoinsByAddress.begin(); it != mapCoinsByAddress.end(); it++) {
         vector<COutput> vCoins, vRewardCoins;
+	bool maxSize = false;    
         vCoins = it->second;
+
+        // We don't want the tx to be refused for being too large
+        // we use 50 bytes as a base tx size (2 output: 2*34 + overhead: 10 -> 90 to be certain)
+        unsigned int txSizeEstimate = 90;
 
         //find masternode rewards that need to be combined
         CCoinControl* coinControl = new CCoinControl();
         CAmount nTotalRewardsValue = 0;
         BOOST_FOREACH (const COutput& out, vCoins) {
+            if (!out.fSpendable)
+                continue;
             //no coins should get this far if they dont have proper maturity, this is double checking
             if (out.tx->IsCoinStake() && out.tx->GetDepthInMainChain() < COINBASE_MATURITY + 1)
-                continue;
-
-            if (out.Value() > nAutoCombineThreshold * COIN)
                 continue;
 
             COutPoint outpt(out.tx->GetHash(), out.i);
             coinControl->Select(outpt);
             vRewardCoins.push_back(out);
             nTotalRewardsValue += out.Value();
+
+            // Combine until our total is enough above the threshold to remain above after adjustments
+            // If no threshold; we want to combine up to MAX_STANDARD_TX_SIZE
+            if (nAutoCombineThreshold && 
+                ((nTotalRewardsValue - nTotalRewardsValue / 10) > nAutoCombineThreshold * COIN))
+                break;
+
+            // Around 180 bytes per input.  We use 190 to be certain
+            txSizeEstimate += 190;
+            if (txSizeEstimate >= MAX_STANDARD_TX_SIZE - 200) {
+                maxSize = true;
+                break;
+	    }            
         }
 
         //if no inputs found then return
         if (!coinControl->HasSelected())
             continue;
 
-        //we cannot combine one coin with itself
-        if (vRewardCoins.size() <= 1)
+        //we cannot combine one coin with itself, nor do we want to constantly 
+	//recombine the previous combine results (Result UTXO + Change UTXO).
+        if (vRewardCoins.size() <= 2)
             continue;
 
         vector<pair<CScript, CAmount> > vecSend;
         CScript scriptPubKey = GetScriptForDestination(it->first.Get());
         vecSend.push_back(make_pair(scriptPubKey, nTotalRewardsValue));
 
-        // Create the transaction and commit it to the network
+        //Send change to same address
+        CTxDestination destMyAddress;
+        if (!ExtractDestination(scriptPubKey, destMyAddress)) {
+            LogPrintf("AutoCombineDust: failed to extract destination\n");
+            continue;
+        }
+        coinControl->destChange = destMyAddress;
+
+	// Create the transaction and commit it to the network
         CWalletTx wtx;
         CReserveKey keyChange(this); // this change address does not end up being used, because change is returned with coin control switch
         string strErr;
         CAmount nFeeRet = 0;
 
-        //get the fee amount
-        CWalletTx wtxdummy;
-        CreateTransaction(vecSend, wtxdummy, keyChange, nFeeRet, strErr, coinControl, ALL_COINS, false, CAmount(0));
-        vecSend[0].second = nTotalRewardsValue - nFeeRet - 500;
+        // 10% safety margin to avoid "Insufficient funds" errors
+        vecSend[0].second = nTotalRewardsValue - (nTotalRewardsValue / 10);
 
         if (!CreateTransaction(vecSend, wtx, keyChange, nFeeRet, strErr, coinControl, ALL_COINS, false, CAmount(0))) {
             LogPrintf("AutoCombineDust createtransaction failed, reason: %s\n", strErr);
             continue;
         }
 
+        //we don't combine below the threshold unless the fees are 0 to avoid paying fees over fees over fees
+        // Don't pass this on one that was above threshold here, but then below threshold after the 10% reduce
+        if (!maxSize && (nTotalRewardsValue-nTotalRewardsValue/10) < nAutoCombineThreshold * COIN && nFeeRet > 0)
+            continue;
+
         if (!CommitTransaction(wtx, keyChange)) {
             LogPrintf("AutoCombineDust transaction commit failed\n");
             continue;
         }
 
-        LogPrintf("AutoCombineDust sent transaction\n");
+        LogPrintf("AutoCombineDust sent transaction. Fee=%d, Total Value=%d Sending=%d\n",
+                  nFeeRet, nTotalRewardsValue, vecSend[0].second);
 
         delete coinControl;
     }
