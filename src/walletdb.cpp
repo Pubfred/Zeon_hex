@@ -226,10 +226,6 @@ bool CWalletDB::EraseMSDisabledAddresses(std::vector<std::string> vDisabledAddre
 bool CWalletDB::WriteAutoCombineSettings(bool fEnable, CAmount nCombineThreshold, int nBlockFrequency)
 {
     nWalletDBUpdated++;
-    std::pair<bool, CAmount> pSettings;
-    pSettings.first = fEnable;
-    pSettings.second = nCombineThreshold;
-    return Write(std::string("autocombinesettings"), pSettings, true);
     // Overwrite the old format with a special flag
     std::pair<bool, CAmount> pSettingsOld;
     pSettingsOld.first = fEnable;
