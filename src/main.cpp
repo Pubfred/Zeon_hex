@@ -1654,6 +1654,91 @@ CAmount GetBlockValue(int nHeight, uint32_t nTime)
     return Params().SubsidyValue(netHashRate, nTime);
 }
 
+CAmount GetSeeSaw(const CAmount& blockValue, int nHeight, bool bDrift)
+{
+    int nMasternodeCountLevel1;
+    int nMasternodeCountLevel2;
+    int nMasternodeCountLevel3;
+    static int lastHeight=0;
+
+    if ((nHeight <= Params().LAST_POW_BLOCK()) && (nHeight != lastHeight)) {
+       LogPrintf("GetSeeSaw() called during POW; strange things may occur!\n");
+    }
+
+    if (IsSporkActive(SPORK_4_MASTERNODE_PAYMENT_ENFORCEMENT))
+    {
+        nMasternodeCountLevel1 = mnodeman.stable_size(1);
+        nMasternodeCountLevel2 = mnodeman.stable_size(2);
+        nMasternodeCountLevel3 = mnodeman.stable_size(3);
+    } else {
+        nMasternodeCountLevel1 = mnodeman.size(1);
+        nMasternodeCountLevel2 = mnodeman.size(2);
+        nMasternodeCountLevel3 = mnodeman.size(3);
+    }
+
+    int64_t nMoneySupply = chainActive.Tip()->nMoneySupply;
+    int64_t mNodeCoins;
+
+    mNodeCoins = nMasternodeCountLevel1 * 1000 * COIN;
+    mNodeCoins += nMasternodeCountLevel2 * 3000 * COIN;
+    mNodeCoins += nMasternodeCountLevel3 * 5000 * COIN;
+
+    if (bDrift) {
+        int64_t mRawLocked = mNodeCoins;
+        // Add drift wiggle room to the calcuation.  
+        mNodeCoins += (mNodeCoins * ((double)Params().MasternodePercentDrift() / 100));
+        if (fDebug && (nHeight != lastHeight)) {
+            LogPrintf("GetSeeSaw(): Adding %d%% to %s locked coins.  Using %s to generate minimum required payment.\n", 
+                      (int)Params().MasternodePercentDrift(), FormatMoney(mRawLocked).c_str(), FormatMoney(mNodeCoins).c_str());
+        }
+    }
+
+    if (fDebug && (nHeight != lastHeight)) {
+        LogPrintf("GetSeeSaw(): Calculating Masternode Reward when Coin Supply is %s and Locked Coins are %s\n", 
+                  FormatMoney(nMoneySupply).c_str(), FormatMoney(mNodeCoins).c_str());
+    }
+
+    CAmount ret = 0;  // if not POS, we will have strange results; however just leave the warning above and let it go.
+
+    /*
+    ** If there aren't any masternodes; we don't want to give the full reward to the
+    ** staker, because that, at best, would discourage someone from creating a masternode.
+    ** It also would only be possible if masternode payments aren't being enforced. 
+    ** It also opens up a vulnerability for gaming if there is very few masternodes, as
+    ** drift would need to account for the possibility of a legit staker not seeing
+    ** the masternode.  By giving the staker very little for no masternodes, both issues
+    ** are solved.
+    */
+    int64_t SeeSawTableIndex = 0;
+    if (mNodeCoins != 0) { 
+        /*
+        ** Calculate the table index; levels are separated by 1.3%
+        ** with an offset of 4. This makes a total table length of
+        ** 77 elements; ranging from 0 to 76.
+        ** 0/anysupply/.013 = 0.  maxsupply/maxsupply/.013 = 76
+        ** Credits: CaveSpectre 2019
+        */
+        SeeSawTableIndex = floor((double)mNodeCoins/nMoneySupply/.013);
+    }
+    /*
+    ** fix up the position to get 96% to 20% masternode stake.
+    ** 100 - 0 - 4 = 96; 100 - 76 - 4 = 20
+    */
+    ret = blockValue * ((double)(100-SeeSawTableIndex-4) / 100);
+    if (fDebug && (nHeight != lastHeight)) {
+        LogPrintf("GetSeeSaw(): Calculated Masternode to receive %s%s of the %s Block Reward\n", 
+                  bDrift ? "at least " : "",
+                  FormatMoney(ret).c_str(),
+                  FormatMoney(blockValue).c_str());
+    }
+
+    lastHeight = nHeight; // save the height so we don't keep issuing the same messages
+    return ret;
+}
+
+
+
+
 int64_t GetMasternodePayment(int nHeight, unsigned mnlevel, int64_t blockValue)
 {
     if (nHeight <= Params().StartMNPaymentsBlock())
