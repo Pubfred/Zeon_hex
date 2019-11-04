@@ -44,6 +44,9 @@ using namespace boost;
 #define SPORK_6_MN_WINNER_MINIMUM_AGE_DEFAULT 8000               // Age in seconds. This should be > MASTERNODE_REMOVAL_SECONDS to avoid
                                                                  // misconfigured new nodes in the list.
                                                                  // Set this to zero to emulate classic behaviour
+#define SPORK_7_NEW_PROTOCOL_ENFORCEMENT_DEFAULT 1587828540      // Date to be defined Later **TODO**
+
+
 class CSporkMessage;
 class CSporkManager;
 
