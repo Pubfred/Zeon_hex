@@ -183,7 +183,7 @@ public:
         nTargetSpacing = 1 * 60;  // ZEON: 1 minute
         nAntiInstamineTime = 720; // 720 blocks with 1 reward for instamine prevention
         nMaturity = 60;
-        nMasternodeCountDrift = 3;
+        nMasternodePercentDrift  = 3;
         nMaxMoneyOut = 45000000 * COIN;
 
         nStartMasternodePaymentsBlock = 7001;
@@ -296,7 +296,7 @@ public:
         nTargetSpacing = 1 * 60;  // ZEON: 1 minute
         nLastPOWBlock = std::numeric_limits<decltype(nLastPOWBlock)>::max();
         nMaturity = 15;
-        nMasternodeCountDrift = 4;
+        nMasternodePercentDrift = 4;
         nModifierUpdateBlock = std::numeric_limits<decltype(nModifierUpdateBlock)>::max();
         nMaxMoneyOut = 1000000000 * COIN;
 
