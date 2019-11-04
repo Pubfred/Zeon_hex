@@ -1739,25 +1739,36 @@ CAmount GetSeeSaw(const CAmount& blockValue, int nHeight, bool bDrift)
 
 
 
-int64_t GetMasternodePayment(int nHeight, unsigned mnlevel, int64_t blockValue)
+int64_t GetMasternodePayment(int nHeight, unsigned mnlevel, int64_t blockValue, bool bDrift)
 {
+    int64_t mnPayment;
+
     if (nHeight <= Params().StartMNPaymentsBlock())
         return 0;
 
+    if (nHeight > Params().LAST_POW_BLOCK() + 1440 ) {
+        // PoS Phase
+        mnPayment = GetSeeSaw(blockValue, nHeight, bDrift);
+    } else {
+        // PoW Phase
+        mnPayment = blockValue / 100 * 27; // 27% to masternodes = 3% level1 + 9% Level 2 + 15% Level3
+    }
+
+    int64_t mnShare = mnPayment / 9;
     switch(mnlevel)
     {
+	     // div out shares
         case 1:
-            return blockValue / 100 * 3;
-
+            return mnShare * 1;
         case 2:
-            return blockValue / 100 * 9;
-
+            return mnShare * 3;
         case 3:
-            return blockValue / 100 * 15;
+            return mnShare * 5;
     }
 
     return 0;
 }
+
 
 bool IsInitialBlockDownload()
 {
