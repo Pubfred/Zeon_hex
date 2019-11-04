@@ -204,7 +204,7 @@ QString windowTitle = tr("ZEON Core") + " - ";
         frameBlocksLayout->addWidget(labelEncryptionIcon);
     }
     
-   // frameBlocksLayout->addWidget(labelStakingIcon);
+    frameBlocksLayout->addWidget(labelStakingIcon);
     frameBlocksLayout->addWidget(labelBlocksIcon);
     frameBlocksLayout->addWidget(labelConnectionsIcon);
     frameBlocksLayout->setAlignment(Qt::AlignRight);
