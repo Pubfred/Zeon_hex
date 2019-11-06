@@ -91,7 +91,8 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn, CWallet* pwallet, 
 {
     // Create new block
     unique_ptr<CBlockTemplate> pblocktemplate(new CBlockTemplate());
-
+    if (!pblocktemplate.get())
+        return NULL;
     CBlock* pblock = &pblocktemplate->block; // pointer for convenience
 
     // -regtest only: allow overriding block.nVersion with
@@ -151,8 +152,8 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn, CWallet* pwallet, 
     {
         LOCK2(cs_main, mempool.cs);
 
-        CBlockIndex* pindexPrev = chainActive.Tip();
-        const int nHeight = pindexPrev->nHeight + 1;
+        pindexPrev = chainActive.Tip();
+        nHeight = pindexPrev->nHeight + 1;
         CCoinsViewCache view(pcoinsTip);
 
         // Priority order to process transactions
@@ -315,6 +316,8 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn, CWallet* pwallet, 
                 }
             }
         }
+  }    
+        
     // Compute final transaction.
     if (fProofOfStake) {
         boost::this_thread::interruption_point();
@@ -390,8 +393,7 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn, CWallet* pwallet, 
             mempool.clear();
             return nullptr;
         }
-    }
-
+ 
     return pblocktemplate.release();
 }
 
