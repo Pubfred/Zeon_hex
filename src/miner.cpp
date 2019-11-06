@@ -119,7 +119,8 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn, CWallet* pwallet, 
 
     // ppcoin: if coinstake available add coinstake tx
     static int64_t nLastCoinStakeSearchTime = GetAdjustedTime(); // only initialized at startup
-
+    CMutableTransaction txCoinStake;
+    
     if (fProofOfStake) {
     pblock->vtx[0].vout[0].SetEmpty();
     pblock->vtx.push_back(CTransaction(txCoinStake));
@@ -483,7 +484,8 @@ bool ProcessBlockFound(CBlock* pblock, CWallet& wallet, CReserveKey& reservekey)
 }
 
 bool fGenerateBitcoins = false;
-
+bool fMintableCoins = false;
+int nMintableLastCheck = 0;
 // ***TODO*** that part changed in bitcoin, we are using a mix with old one here for now
 
 void BitcoinMiner(CWallet* pwallet, bool fProofOfStake)
