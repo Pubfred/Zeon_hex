@@ -233,7 +233,7 @@ bool CMasternodePayments::GetBlockPayee(int nBlockHeight, unsigned mnlevel, CScr
 }
 
 // Is this masternode scheduled to get paid soon?
-bool CMasternodePayments::IsScheduled(CMasternode& mn, int nNotBlockHeight) const
+bool CMasternodePayments::IsScheduled(CMasternode& mn, int nSameLevelMNCount, int nNotBlockHeight) const
 {
     LOCK(cs_mapMasternodeBlocks);
 
@@ -520,12 +520,13 @@ bool CMasternodePayments::ProcessBlock(int nBlockHeight)
 {
     if(!fMasterNode)
         return false;
+    auto nWinnerBlockHeight = nBlockHeight + 10;
 
     //reference node - hybrid mode
 
     if(nWinnerBlockHeight <= nLastBlockHeight)
         return false;
- 
+
     int n = mnodeman.GetMasternodeRank(activeMasternode.vin, nWinnerBlockHeight - 100, ActiveProtocol());
  
     if(n == -1) {
@@ -553,8 +554,6 @@ bool CMasternodePayments::ProcessBlock(int nBlockHeight)
     std::vector<CMasternodePaymentWinner> winners;
 
     for(unsigned mnlevel = CMasternode::LevelValue::MIN; mnlevel <= CMasternode::LevelValue::MAX; ++mnlevel) {
-
-        CMasternodePaymentWinner newWinner{activeMasternode.vin};
 
         unsigned nCount = 0;
 
