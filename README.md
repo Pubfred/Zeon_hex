@@ -36,7 +36,7 @@ If you like our Idea, feel free to contact us and work with us.
 <tr><td>Target block time</td><td>60 s</td></tr>
 <tr><td>Instamine protection</td><td>First 720 blocks</td></tr>
 <tr><td>Hashing algorithm</td><td>HEX</td></tr>
-<tr><td>Estimated ZEON supply during POW</td><td>‭3,077,840‬</td></tr>
+<tr><td>Estimated ZEON supply during POW</td><td>‭3,105,840‬</td></tr>
 <tr><td>POS starting block</td><td>777001</td></tr>
 <tr><td>POS phase duration</td><td>Unlimited for now</td></tr>
 <tr><td>POS block reward</td><td>5 ZEON lowering by 1 coins every year until block reward is 1 ZEON</td></tr>
@@ -54,9 +54,10 @@ If you like our Idea, feel free to contact us and work with us.
 
 <table>
 <tr><th>Starting Block</th><th>Ending Block</th><th>Block Reward</th><th>Total Supply</th><th>Phase Length</th></tr>
-<tr><th>777,001</th><th>787,000</th><th>1</th><th>8,415,839</th><th>1 week</th></tr>
-<tr><th>787,001</th><th>1,302,600</th><th>5</th><th>10,993,839</th><th>51 weeks</th></tr>
-<tr><th>1,302,601</th><th>1,828,200</th><th>4</th><th>13,096,239</th><th>52 weeks</th></tr>
+<tr><th>777,001</th><th>787,080 </th><th>1</th><th>‭3,115,920‬</th><th>1 week</th></tr>
+<tr><th>787,081</th><th>‭1,301,160‬</th><th>5</th><th>‭5,676,240‬</th><th>51 weeks</th></tr>
+<tr><th>1,301,160</th><th>‭1,825,320‬</th><th>4</th><th>‭7,772,880‬</th><th>52 weeks</th></tr>
+<tr> </tr> 
 <tr><th>1,828,201</th><th>2,353,800</th><th>3</th><th>14,673,039</th><th>52 weeks</th></tr>
 <tr><th>2,353,800</th><th>2,879,401</th><th>2</th><th>17,301,039</th><th>52 weeks</th></tr>
 <tr><th>3,405,000</th><th>30,578,361</th><th>1</th><th>45,000,000</th><th>50 years</th></tr>
