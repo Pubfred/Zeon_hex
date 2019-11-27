@@ -2,6 +2,8 @@
 // Copyright (c) 2016-2017 The PIVX developers
 // Copyright (c) 2017-2018 The Bulwark developers
 // Copyright (c) 2018-2019 The ZEON Core developers
+// Copyright (c) 2019-2020 The ZEON Core developers
+
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -27,7 +29,7 @@ using namespace boost;
     - This would result in old clients getting confused about which spork is for what
 */
 #define SPORK_START 10001
-#define SPORK_END 10006
+#define SPORK_END 10007
 
 #define SPORK_1_SWIFTTX 10001
 #define SPORK_2_SWIFTTX_BLOCK_FILTERING 10002
