@@ -274,7 +274,7 @@ public:
 
     unsigned Level()
     {
-        return Level(deposit);
+        return Level(deposit,chainActive.Height());
     }
 
     int64_t GetLastPaid();
