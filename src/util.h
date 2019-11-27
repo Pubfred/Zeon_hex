@@ -3,6 +3,8 @@
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2017 The PIVX developers
 // Copyright (c) 2018-2019 The ZEON Core developers
+// Copyright (c) 2019-2020 The ZEON Core developers
+
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -58,6 +60,7 @@ extern bool fLogIPs;
 extern volatile bool fReopenDebugLog;
 
 void SetupEnvironment();
+bool SetupNetworking();
 
 /** Return true if log accepts specified category */
 bool LogAcceptCategory(const char* category);
@@ -103,6 +106,9 @@ static inline bool error(const char* format)
     return false;
 }
 
+
+double double_safe_addition(double fValue, double fIncrement);
+double double_safe_multiplication(double fValue, double fmultiplicator);
 void PrintExceptionContinue(std::exception* pex, const char* pszThread);
 void ParseParameters(int argc, const char* const argv[]);
 void FileCommit(FILE* fileout);
@@ -223,18 +229,12 @@ void LoopForever(const char* name, Callable func, int64_t msecs)
         }
     } catch (boost::thread_interrupted) {
         LogPrintf("%s thread stop\n", name);
-        // rethrow exception if current thread is not the "net" thread
-        if (strcmp(name, "net"))
         throw;
     } catch (std::exception& e) {
         PrintExceptionContinue(&e, name);
-        // rethrow exception if current thread is not the "net" thread
-        if (strcmp(name, "net"))
         throw;
     } catch (...) {
         PrintExceptionContinue(NULL, name);
-        // rethrow exception if current thread is not the "net" thread
-        if (strcmp(name, "net"))
         throw;
     }
 }
