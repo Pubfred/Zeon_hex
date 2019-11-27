@@ -1,6 +1,8 @@
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2017 The PIVX developers
 // Copyright (c) 2018-2019 The ZEON Core developers
+// Copyright (c) 2019-2020 The ZEON Core developers
+
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -469,7 +471,7 @@ std::map<unsigned, unsigned> CMasternodeMan::CountEnabledByLevels(int protocolVe
     std::map<unsigned, unsigned> result;
 
     for(unsigned l = CMasternode::LevelValue::MIN; l <= CMasternode::LevelValue::MAX; ++l)
-        result.emplace(l, 0);
+        result.emplace(l, 0u);
 
     for(auto& mn : vMasternodes)
     {
@@ -549,7 +551,12 @@ bool CMasternodeMan::WinnersUpdate(CNode* node)
         }
     }
 
-    node->PushMessage("mnget", mnodeman.CountEnabled());
+    auto mn_counts = mnodeman.CountEnabledByLevels();
+    unsigned max_mn_count = 0u;
+    for(const auto& count : mn_counts)
+        max_mn_count = std::max(max_mn_count, count.second);
+ 
+    node->PushMessage("mnget", max_mn_count);
     int64_t askAgain = GetTime() + MASTERNODES_DSEG_SECONDS;
     mWeAskedForWinnerMasternodeList[node->addr] = askAgain;
     return true;
@@ -565,7 +572,7 @@ CMasternode* CMasternodeMan::Find(const CScript& payee)
         if (payee2 == payee)
             return &mn;
     }
-    return NULL;
+    return nullptr;
 }
 
 CMasternode* CMasternodeMan::Find(const CTxIn& vin)
@@ -576,7 +583,7 @@ CMasternode* CMasternodeMan::Find(const CTxIn& vin)
         if (mn.vin.prevout == vin.prevout)
             return &mn;
     }
-    return NULL;
+    return nullptr;
 }
 
 
@@ -588,7 +595,7 @@ CMasternode* CMasternodeMan::Find(const CPubKey& pubKeyMasternode)
         if (mn.pubKeyMasternode == pubKeyMasternode)
             return &mn;
     }
-    return NULL;
+    return nullptr;
 }
 
 CMasternode* CMasternodeMan::Find(const CService& service)
@@ -610,7 +617,6 @@ CMasternode* CMasternodeMan::GetNextMasternodeInQueueForPayment(int nBlockHeight
 {
     LOCK(cs);
 
-    CMasternode* pBestMasternode = nullptr;
     std::vector<std::pair<int64_t, CTxIn> > vecMasternodeLastPaid;
 
     /*
@@ -621,11 +627,6 @@ CMasternode* CMasternodeMan::GetNextMasternodeInQueueForPayment(int nBlockHeight
 
     for(CMasternode& mn : vMasternodes) {
 
-        mn.Check();
-
-        if (!mn.IsEnabled())
-            continue;
-
         if(mn.Level() != mnlevel)
             continue;
 
@@ -633,8 +634,13 @@ CMasternode* CMasternodeMan::GetNextMasternodeInQueueForPayment(int nBlockHeight
         if (mn.protocolVersion < masternodePayments.GetMinMasternodePaymentsProto())
             continue;
 
-        //it's in the list (up to 8 entries ahead of current block to allow propagation) -- so let's skip it
-        if (masternodePayments.IsScheduled(mn, nBlockHeight))
+         mn.Check();
+ 
+         if(!mn.IsEnabled())
+            continue;
+ 
+        //it's in the list -- so let's skip it
+        if(masternodePayments.IsScheduled(mn, nMnCount, nBlockHeight))
             continue;
 
         //it's too new, wait for a cycle
@@ -661,9 +667,11 @@ CMasternode* CMasternodeMan::GetNextMasternodeInQueueForPayment(int nBlockHeight
     //  -- This doesn't look at who is being paid in the +8-10 blocks, allowing for double payments very rarely
     //  -- 1/100 payments should be a double payment on mainnet - (1/(3000/10))*2
     //  -- (chance per block * chances before IsScheduled will fire)
-    int nTenthNetwork = CountEnabled(mnlevel) / 10;
-    int nCountTenth = 0;
+    int     nCountTenth = nMnCount / 10;
     uint256 nHigh = 0;
+ 
+    CMasternode* pBestMasternode = nullptr;
+    
     BOOST_FOREACH (PAIRTYPE(int64_t, CTxIn) & s, vecMasternodeLastPaid) {
         CMasternode* pmn = Find(s.second);
         if (!pmn) break;
@@ -673,8 +681,8 @@ CMasternode* CMasternodeMan::GetNextMasternodeInQueueForPayment(int nBlockHeight
             nHigh = n;
             pBestMasternode = pmn;
         }
-        nCountTenth++;
-        if (nCountTenth >= nTenthNetwork) break;
+        if(--nCountTenth > 0)
+            break;
     }
     return pBestMasternode;
 }
@@ -868,7 +876,7 @@ CMasternode* CMasternodeMan::GetMasternodeByRank(int nRank, int64_t nBlockHeight
         }
     }
 
-    return NULL;
+    return nullptr;
 }
 
 void CMasternodeMan::ProcessMasternodeConnections()
@@ -974,7 +982,7 @@ void CMasternodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CData
             // if nothing significant failed, search existing Masternode list
             CMasternode* pmn = Find(mnp.vin);
             // if it's known, don't ask for the mnb, just return
-            if (pmn != NULL) return;
+            if (pmn) return;
         }
 
         // something significant is broken or mn is unknown,
