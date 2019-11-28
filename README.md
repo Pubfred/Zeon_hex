@@ -54,14 +54,16 @@ If you like our Idea, feel free to contact us and work with us.
 
 <table>
 <tr><th>Starting Block</th><th>Ending Block</th><th>Block Reward</th><th>Total Supply</th><th>Phase Length</th></tr>
-<tr><th>777,001</th><th>787,080 </th><th>1</th><th>‭3,115,920‬</th><th>1 week</th></tr>
-<tr><th>787,081</th><th>‭1,301,160‬</th><th>5</th><th>‭5,676,240‬</th><th>51 weeks</th></tr>
-<tr><th>1,301,160</th><th>‭1,825,320‬</th><th>4</th><th>‭7,772,880‬</th><th>52 weeks</th></tr>
+<tr><th>777,001</th><th>778,441 </th><th>1</th><th>‭3,107,280‬</th><th>1 day</th></tr>
+<tr><th>778,441</th><th>‭1,302,600‬</th><th>5</th><th>‭5,728,075‬</th><th>52 weeks</th></tr>
+<tr><th>1,302,601</th><th>‭1,828,200‬</th><th>4</th><th>‭7,830,471‬</th><th>52 weeks</th></tr>
 <tr> </tr> 
-<tr><th>1,828,201</th><th>2,353,800</th><th>3</th><th>14,673,039</th><th>52 weeks</th></tr>
-<tr><th>2,353,800</th><th>2,879,401</th><th>2</th><th>17,301,039</th><th>52 weeks</th></tr>
-<tr><th>3,405,000</th><th>30,578,361</th><th>1</th><th>45,000,000</th><th>50 years</th></tr>
+<tr><th>1,828,201</th><th>2,879,400</th><th>3</th><th>10,984,068</th><th>104 weeks</th></tr>
+<tr><th>2,879,401</th><th>3,405,000</th><th>2</th><th>12,035,266</th><th>52 weeks</th></tr>
+ 
+<tr><th>3,405,001</th><th> ... </th><th>1</th><th>MAX</th><th> ... years</th></tr>
 </table>
+
 
 
  ![Screenshot](png/network-hashrate.png)    ![Screenshot](png/blockreward.png)  
