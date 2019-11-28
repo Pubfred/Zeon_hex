@@ -319,7 +319,7 @@ bool CActiveMasternode::GetMasterNodeVin(CTxIn& vin, CPubKey& pubkey, CKey& secr
             if(out.tx->GetHash() != txHash || out.i != outputIndex)
                 continue;
 
-            if(!CMasternode::Level(out.tx->vout[out.i].nValue, chainActive.Height())
+            if(!CMasternode::Level(out.tx->vout[out.i].nValue, chainActive.Height()))
                 continue;
 
             selectedOutput = &out;
