@@ -328,8 +328,7 @@ unsigned CMasternode::Level(const CTxIn& vin)
 
 bool CMasternode::IsDepositCoins(CAmount vin_val)
 {
-    return Level(vin_val, chainActive.Height());
-    
+    return Level(vin_val);
 }
 
 bool CMasternode::IsDepositCoins(const CTxIn& vin, CAmount& vin_val)
