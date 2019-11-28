@@ -1651,7 +1651,7 @@ CAmount GetBlockValue(int nHeight, uint32_t nTime)
 
     int64_t netHashRate = chainActive.GetNetworkHashPS(24, nHeight);
 
-    return Params().SubsidyValue(netHashRate, nTime);
+    return Params().SubsidyValue(netHashRate);
 }
 
 CAmount GetSeeSaw(const CAmount& blockValue, int nHeight, bool bDrift)
