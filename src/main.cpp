@@ -1617,7 +1617,8 @@ double ConvertBitsToDouble(unsigned int nBits)
     return dDiff;
 }
 
-CAmount GetBlockValue(int nHeight, uint32_t nTime)
+
+CAmount GetBlockValue(int nHeight)
 {
     if (nHeight == 1) {
         return 400000 * COIN;
