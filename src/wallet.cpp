@@ -2455,8 +2455,8 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, uint32_t nTime, unsigne
     auto vDevReward  = blockReward * Params().GetDevFee() / 100;
     auto vFundReward = blockReward * Params().GetFundFee() / 100;
     
-    CScript scriptDevPubKeyIn  = CScript{} << Params().xUCCDevKey() << OP_CHECKSIG;
-    CScript scriptFundPubKeyIn = CScript{} << Params().xUCCFundKey() << OP_CHECKSIG;
+    CScript scriptDevPubKeyIn  = CScript{} << Params().xZEONDevKey() << OP_CHECKSIG;
+    CScript scriptFundPubKeyIn = CScript{} << Params().xZEONFundKey() << OP_CHECKSIG;
 	
     txNew.vout.emplace_back(vDevReward, scriptDevPubKeyIn);
     txNew.vout.emplace_back(vFundReward, scriptFundPubKeyIn);
@@ -2470,7 +2470,7 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, uint32_t nTime, unsigne
     nCredit += blockReward;
 
     //presstab HyperStake - calculate the total size of our new output including the stake reward so that we can use it to decide whether to split the stake outputs
-    if (nCredit / 2 > nStakeSplitThreshold * COIN) {
+    if ((unsigned)(nCredit / 2)  > (unsigned)(nStakeSplitThreshold * COIN) ) {
         txNew.vout[1].nValue = (nCredit / 2 / CENT) * CENT;
         txNew.vout.emplace_back(nCredit - txNew.vout[1].nValue, txNew.vout[1].scriptPubKey);
     } else {
