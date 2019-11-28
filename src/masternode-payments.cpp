@@ -345,7 +345,7 @@ bool CMasternodeBlockPayees::IsTransactionValid(const CTransaction& txNew, uint3
     if(!max_signatures.size())
         return true;
 
-        CAmount nReward = GetBlockValue(nBlockHeight);
+    CAmount nReward = GetBlockValue(nBlockHeight);
  
     if (nBlockHeight > Params().LAST_POW_BLOCK()) {
         // Deduct the payments out so SeeSaw splits the right amount
