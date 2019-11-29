@@ -28,6 +28,8 @@ If you like our Idea, feel free to contact us and work with us.
 ![Screenshot](png/zeon_distribution.png)
 
 
+
+
 <table>
 <tr><td>Name & ticker</td><td> Zeon (ZEON)</td></tr>
 <tr><td>Consensus algorithm</td><td>PoW/POS</td></tr>
