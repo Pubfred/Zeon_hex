@@ -61,7 +61,7 @@ If you like our Idea, feel free to contact us and work with us.
 <tr><th>1,828,201</th><th>2,879,400</th><th>3</th><th>10,984,068</th><th>104 weeks</th></tr>
 <tr><th>2,879,401</th><th>3,405,000</th><th>2</th><th>12,035,266</th><th>52 weeks</th></tr>
  
-<tr><th>3,405,001</th><th> Premine‬ </th><th>1</th><th>MAX</th><th> 400,000 </th></tr>
+<tr><th>3,405,001</th><th> ...‬ </th><th>1</th><th>MAX</th><th> ... </th></tr>
 </table>
 
 
