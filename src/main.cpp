@@ -1663,12 +1663,15 @@ CAmount GetSeeSaw(const CAmount& blockValue, int nHeight, bool bDrift)
     int coefficientmult=1;  	
     static int lastHeight=0;
     
-    if (blockHeight >= 0 && blockHeight < 850001 ) {
+    if (blockHeight >= 0 && blockHeight < 850000 ) {
 	   coefficientmult = 1;  
-    }
-    else if (blockHeight >= 850001) { 	
+    } else if (blockHeight >= 850000) { 	
            coefficientmult = 5;  
-    }	    
+    } else if (blockHeight >= 1700000) { 	
+           coefficientmult = 10;  
+    } else if (blockHeight >= 2550000) { 	
+           coefficientmult = 20;  
+    } 	   	    	    
     // coefficientmult change with CMasternode::Level(CAmount vin_val, int blockHeight)
     // masternode.cpp line 306 	...
 	
