@@ -107,10 +107,20 @@ Feel free to download release here :
 ![Screenshot](png/Pow_distribution.png)
 
 
-### Masternode 3 levels 
+### Masternode 3 levels  until block 850000  ....
 
 
 ![Screenshot](png/Masternode_reward.png)
+
+### Masternode 3 levels from  block 850001 to 1700000  ....
+
+<table>
+<tr><th>Starting Block</th><th>Ending Block</th><th>Type</th><th>Collateral</th></tr>
+<tr><th>850001</th><th>1700000</th><th>Light Node</th><th>5000‬</th></tr>
+<tr><th>850001</th><th>‭1700000‬</th><th>Medium Node</th><th>15000‬</th></tr>
+<tr><th>850001</th><th>‭1700000</th><th>Full Node</th><th>‭25000‬</th></tr>
+</table>
+
 
 
 ### Masternode Host & Share
