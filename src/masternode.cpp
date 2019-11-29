@@ -3,6 +3,7 @@
 // Copyright (c) 2018-2019 The ZEON Core developers
 // Copyright (c) 2019-2020 The ZEON Core developers
 
+
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -313,19 +314,19 @@ unsigned CMasternode::Level(CAmount vin_val, int blockHeight)
           case 3000  * COIN: return 2;
           case 5000  * COIN: return 3;
       }
-    } else if (blockHeight >= 850000 && blockHeight < ‭1700000 ) {
+    } else if (blockHeight >= 850000 && blockHeight < 1700000 ) {
         switch(vin_val) {
           case 5000   * COIN: return 1;
           case 15000  * COIN: return 2;
           case 25000  * COIN: return 3;
         }
-    } else if (blockHeight >= 1700000‬ && blockHeight < ‭2550000 ) {
+    } else if (blockHeight >= 1700000‬ && blockHeight < 2550000 ) {
         switch(vin_val) {
           case 10000  * COIN: return 1;
           case 30000  * COIN: return 2;
           case 50000  * COIN: return 3;
         }
-    } else if (blockHeight >= ‭2550000 ) {  
+    } else if (blockHeight >= 2550000 )  {
         switch(vin_val) {
           case 20000   * COIN: return 1;
           case 60000   * COIN: return 2;
