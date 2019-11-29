@@ -121,6 +121,15 @@ Feel free to download release here :
 <tr><th>850001</th><th>‭1700000</th><th>Full Node</th><th>‭25000‬</th></tr>
 </table>
 
+### Masternode 3 levels from  block 1700001 to 2550000  ....
+
+<table>
+<tr><th>Starting Block</th><th>Ending Block</th><th>Type</th><th>Collateral</th></tr>
+<tr><th>1700001</th><th>2550000</th><th>Light Node</th><th>10000‬</th></tr>
+<tr><th>1700001</th><th>2550000‬</th><th>Medium Node</th><th>30000‬</th></tr>
+<tr><th>1700001</th><th>2550000</th><th>Full Node</th><th>‭50000‬</th></tr>
+</table>
+
 
 
 ### Masternode Host & Share
