@@ -67,6 +67,21 @@ If you like our Idea, feel free to contact us and work with us.
 </table>
 
 
+### See-Saw Rewards Mechanism
+Block rewards received by the staker and winning masternode vary based 
+on the amount of coins held for masternodes vs amount of coins available 
+for staking on the network allows for Variable rewards based on needs 
+of the network to keep the network services (Masternodes) 
+and the security of the network (Staking Wallets) evenly distributed.
+When there are fewer as the number of masternodes rises the portion of the block 
+reward that they earn is reduced, it increases when the number of masternodes declines.
+
+Another intended benefit and goal of the Seesaw Reward Balance System is to ensure
+that it is more profitable for users running masternodes than it would be to stake the
+equal number of coins, under the normal circumstances of being below the
+equilibrium threshold. The reason behind this is due to the extra cost, risk and time
+associated with maintaining the masternodes are greater than staking alone.
+
 
  ![Screenshot](png/network-hashrate.png)    ![Screenshot](png/blockreward.png)  
 
