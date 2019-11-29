@@ -1660,8 +1660,20 @@ CAmount GetSeeSaw(const CAmount& blockValue, int nHeight, bool bDrift)
     int nMasternodeCountLevel1;
     int nMasternodeCountLevel2;
     int nMasternodeCountLevel3;
+    int coefficientmult=1;  	
     static int lastHeight=0;
-
+    
+    if (blockHeight >= 0 && blockHeight < 850001 ) {
+	   coefficientmult = 1;  
+    }
+    else if (blockHeight >= 850001) { 	
+           coefficientmult = 5;  
+    }	    
+    // coefficientmult change with CMasternode::Level(CAmount vin_val, int blockHeight)
+    // masternode.cpp line 306 	...
+	
+	    
+	    
     if ((nHeight <= Params().LAST_POW_BLOCK()) && (nHeight != lastHeight)) {
        LogPrintf("GetSeeSaw() called during POW; strange things may occur!\n");
     }
@@ -1683,7 +1695,9 @@ CAmount GetSeeSaw(const CAmount& blockValue, int nHeight, bool bDrift)
     mNodeCoins = nMasternodeCountLevel1 * 1000 * COIN;
     mNodeCoins += nMasternodeCountLevel2 * 3000 * COIN;
     mNodeCoins += nMasternodeCountLevel3 * 5000 * COIN;
-
+    mNodeCoins = mNodeCoins * coefficientmult;
+    	
+	
     if (bDrift) {
         int64_t mRawLocked = mNodeCoins;
         // Add drift wiggle room to the calcuation.  
