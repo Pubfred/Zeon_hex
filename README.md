@@ -176,7 +176,7 @@ https://zeonhexalgo.fun/roadmap.html
 
 ### Exchange ZEON 
 
-[https://trade.zeonhexalgo.fun](https://trade.zeonhexalgo.fun)
+[https://exchange.zeonhexalgo.fun/](https://exchange.zeonhexalgo.fun/)
 
 ![Screenshot](png/Zeon_trade2.png)
 
