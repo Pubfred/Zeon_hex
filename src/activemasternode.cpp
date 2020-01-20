@@ -319,7 +319,7 @@ bool CActiveMasternode::GetMasterNodeVin(CTxIn& vin, CPubKey& pubkey, CKey& secr
             if(out.tx->GetHash() != txHash || out.i != outputIndex)
                 continue;
 
-            if(!CMasternode::Level(out.tx->vout[out.i].nValue))
+            if(!CMasternode::Level(out.tx->vout[out.i].nValue, chainActive.Height()))
                 continue;
 
             selectedOutput = &out;
@@ -339,14 +339,14 @@ bool CActiveMasternode::GetMasterNodeVin(CTxIn& vin, CPubKey& pubkey, CKey& secr
 
         selectedOutput = &possibleCoins[0];
 
-        auto selected_level = CMasternode::Level(selectedOutput->tx->vout[selectedOutput->i].nValue);
+        auto selected_level = CMasternode::Level(selectedOutput->tx->vout[selectedOutput->i].nValue, chainActive.Height());
 
         for(auto& out : possibleCoins) {
 
             if(selected_level == 3u)
                 break;
 
-            if(CMasternode::Level(out.tx->vout[out.i].nValue) > selected_level)
+            if(CMasternode::Level(out.tx->vout[out.i].nValue, chainActive.Height()) > selected_level)
                 selectedOutput = &out;
         }
     }

@@ -28,6 +28,8 @@ If you like our Idea, feel free to contact us and work with us.
 ![Screenshot](png/zeon_distribution.png)
 
 
+
+
 <table>
 <tr><td>Name & ticker</td><td> Zeon (ZEON)</td></tr>
 <tr><td>Consensus algorithm</td><td>PoW/POS</td></tr>
@@ -36,10 +38,10 @@ If you like our Idea, feel free to contact us and work with us.
 <tr><td>Target block time</td><td>60 s</td></tr>
 <tr><td>Instamine protection</td><td>First 720 blocks</td></tr>
 <tr><td>Hashing algorithm</td><td>HEX</td></tr>
-<tr><td>Estimated ZEON supply during POW</td><td>80,000,000</td></tr>
+<tr><td>Estimated ZEON supply during POW</td><td>‭3,105,840‬</td></tr>
 <tr><td>POS starting block</td><td>777001</td></tr>
 <tr><td>POS phase duration</td><td>Unlimited for now</td></tr>
-<tr><td>POS block reward</td><td>24 ZEON lowering by 4 coins every 525600 blocks until block reward is 1 ZEON</td></tr>
+<tr><td>POS block reward</td><td>5 ZEON lowering by 1 coins every year until block reward is 1 ZEON</td></tr>
 <tr><td>POS block reward distribution</td><td>SeeSaw</td></tr>
 <tr><td>Estimated ZEON supply during 15 years of POS</td><td>47,000,000</td></tr>
 <tr><td>Premine</td><td> 400 000  ZEON (0.3 % of total supply )</td></tr>
@@ -50,26 +52,36 @@ If you like our Idea, feel free to contact us and work with us.
 </table>
 
 
-### Block reward for the BitGun Algo (Thanks goes to XDNA-Devs!)
+### Block reward for PoS (assuming current PoW rate)
 
 <table>
-<tr><th>Level</th><th>Network hashrate (Gh/s)</th><th>Block reward</th></tr>
-<tr><th>1</th><th>0</th><th>4</th></tr>
-<tr><th>2</th><th>20</th><th>5</th></tr>
-<tr><th>3</th><th>30</th><th>7</th></tr>
-<tr><th>4</th><th>50</th><th>10</th></tr>
-<tr><th>5</th><th>80</th><th>14</th></tr>
-<tr><th>6</th><th>130</th><th>19</th></tr>
-<tr><th>7</th><th>210</th><th>25</th></tr>
-<tr><th>8</th><th>340</th><th>32</th></tr>
-<tr><th>9</th><th>550</th><th>40</th></tr>
-<tr><th>10</th><th>890</th><th>49</th></tr>
-<tr><th>11</th><th>1440</th><th>59</th></tr>
-<tr><th>12</th><th>2330</th><th>70</th></tr>
-<tr><th>13</th><th>3770</th><th>82</th></tr>
-<tr><th>14</th><th>6100</th><th>95</th></tr>
-<tr><th>15</th><th>9870</th><th>109</th></tr>
+<tr><th>Starting Block</th><th>Ending Block</th><th>Block Reward</th><th>Total Supply</th><th>Phase Length</th></tr>
+<tr><th>777,001</th><th>778,441 </th><th>1</th><th>‭3,107,280‬</th><th>1 day</th></tr>
+<tr><th>778,441</th><th>‭1,302,600‬</th><th>5</th><th>‭5,728,075‬</th><th>52 weeks</th></tr>
+<tr><th>1,302,601</th><th>‭1,828,200‬</th><th>4</th><th>‭7,830,471‬</th><th>52 weeks</th></tr>
+<tr> </tr> 
+<tr><th>1,828,201</th><th>2,879,400</th><th>3</th><th>10,984,068</th><th>104 weeks</th></tr>
+<tr><th>2,879,401</th><th>3,405,000</th><th>2</th><th>12,035,266</th><th>52 weeks</th></tr>
+ 
+<tr><th>3,405,001</th><th> ...‬ </th><th>1</th><th>MAX</th><th> ... </th></tr>
 </table>
+
+
+### See-Saw Rewards Mechanism
+Block rewards received by the staker and winning masternode vary based 
+on the amount of coins held for masternodes vs amount of coins available 
+for staking on the network allows for Variable rewards based on needs 
+of the network to keep the network services (Masternodes) 
+and the security of the network (Staking Wallets) evenly distributed.
+When there are fewer as the number of masternodes rises the portion of the block 
+reward that they earn is reduced, it increases when the number of masternodes declines.
+
+Another intended benefit and goal of the Seesaw Reward Balance System is to ensure
+that it is more profitable for users running masternodes than it would be to stake the
+equal number of coins, under the normal circumstances of being below the
+equilibrium threshold. The reason behind this is due to the extra cost, risk and time
+associated with maintaining the masternodes are greater than staking alone.
+
 
  ![Screenshot](png/network-hashrate.png)    ![Screenshot](png/blockreward.png)  
 
@@ -95,10 +107,29 @@ Feel free to download release here :
 ![Screenshot](png/Pow_distribution.png)
 
 
-### Masternode 3 levels 
+### Masternode 3 levels  until block 850000  ....
 
 
 ![Screenshot](png/Masternode_reward.png)
+
+### Masternode 3 levels from  block 850001 to 1700000  ....
+
+<table>
+<tr><th>Starting Block</th><th>Ending Block</th><th>Type</th><th>Collateral</th></tr>
+<tr><th>850001</th><th>1700000</th><th>Light Node</th><th>5000‬</th></tr>
+<tr><th>850001</th><th>‭1700000‬</th><th>Medium Node</th><th>15000‬</th></tr>
+<tr><th>850001</th><th>‭1700000</th><th>Full Node</th><th>‭25000‬</th></tr>
+</table>
+
+### Masternode 3 levels from  block 1700001 to 2550000  ....
+
+<table>
+<tr><th>Starting Block</th><th>Ending Block</th><th>Type</th><th>Collateral</th></tr>
+<tr><th>1700001</th><th>2550000</th><th>Light Node</th><th>10000‬</th></tr>
+<tr><th>1700001</th><th>2550000‬</th><th>Medium Node</th><th>30000‬</th></tr>
+<tr><th>1700001</th><th>2550000</th><th>Full Node</th><th>‭50000‬</th></tr>
+</table>
+
 
 
 ### Masternode Host & Share
@@ -145,7 +176,7 @@ https://zeonhexalgo.fun/roadmap.html
 
 ### Exchange ZEON 
 
-[https://trade.zeonhexalgo.fun](https://trade.zeonhexalgo.fun)
+[https://exchange.zeonhexalgo.fun/](https://exchange.zeonhexalgo.fun/)
 
 ![Screenshot](png/Zeon_trade2.png)
 

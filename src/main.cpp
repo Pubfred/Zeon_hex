@@ -1617,31 +1617,34 @@ double ConvertBitsToDouble(unsigned int nBits)
     return dDiff;
 }
 
-CAmount GetBlockValue(int nHeight, uint32_t nTime)
+
+CAmount GetBlockValue(int nHeight)
 {
     if (nHeight == 1) {
         return 400000 * COIN;
     } else if (nHeight <= Params().ANTI_INSTAMINE_TIME()) {
         return 1 * COIN;
-
+       // POS Cutover phase / 1 day
+    } else if (nHeight <= (Params().LAST_POW_BLOCK()+1440) && nHeight > Params().LAST_POW_BLOCK()) {
+        return 1 * COIN;
       // POS Year 1
-    } else if (nHeight <= 1302600 && nHeight > Params().LAST_POW_BLOCK()) {
-        return 24 * COIN;
+    } else if (nHeight <= 1302600 && nHeight > Params().LAST_POW_BLOCK()+1440) {
+        return 5 * COIN;
       // POS Year 2
     } else if (nHeight <= 1828200 && nHeight >= 1302601) {
-        return 20 * COIN;
+        return 4 * COIN;
       // POS Year 3
     } else if (nHeight <= 2353800 && nHeight >= 1828201) {
-        return 16 * COIN;
+        return 3 * COIN;
       // POS Year 4
     } else if (nHeight <= 2879400 && nHeight >= 2353801) {
-        return 12 * COIN;
+        return 3 * COIN;
       // POS Year 5
     } else if (nHeight <= 3405000 && nHeight >= 2879401) {
-        return 8 * COIN;
+        return 2 * COIN;
       // POS Year 6
     } else if (nHeight <= 3930600 && nHeight >= 3405001) {
-        return 4 * COIN;
+        return 1 * COIN;
       // POS after Year 6
     } else if (nHeight >= 3930601) {
         return 1 * COIN;
@@ -1649,28 +1652,141 @@ CAmount GetBlockValue(int nHeight, uint32_t nTime)
 
     int64_t netHashRate = chainActive.GetNetworkHashPS(24, nHeight);
 
-    return Params().SubsidyValue(netHashRate, nTime);
+    return Params().SubsidyValue(netHashRate);
 }
 
-int64_t GetMasternodePayment(int nHeight, unsigned mnlevel, int64_t blockValue)
+CAmount GetSeeSaw(const CAmount& blockValue, int nHeight, bool bDrift)
 {
+    int nMasternodeCountLevel1;
+    int nMasternodeCountLevel2;
+    int nMasternodeCountLevel3;
+    int coefficientmult=1;  	
+    static int lastHeight=0;
+    
+    if (nHeight >= 0 && nHeight < 850000 ) {
+	   coefficientmult = 1;  
+    } else if (nHeight >= 850000) { 	
+           coefficientmult = 5;  
+    } else if (nHeight >= 1700000) { 	
+           coefficientmult = 10;  
+    } else if (nHeight >= 2550000) { 	
+           coefficientmult = 20;  
+    } 	   	    	    
+    // coefficientmult change with CMasternode::Level(CAmount vin_val, int blockHeight)
+    // masternode.cpp line 306 	...
+	
+	    
+	    
+    if ((nHeight <= Params().LAST_POW_BLOCK()) && (nHeight != lastHeight)) {
+       LogPrintf("GetSeeSaw() called during POW; strange things may occur!\n");
+    }
+
+    if (IsSporkActive(SPORK_4_MASTERNODE_PAYMENT_ENFORCEMENT))
+    {
+        nMasternodeCountLevel1 = mnodeman.stable_size(1);
+        nMasternodeCountLevel2 = mnodeman.stable_size(2);
+        nMasternodeCountLevel3 = mnodeman.stable_size(3);
+    } else {
+        nMasternodeCountLevel1 = mnodeman.size(1);
+        nMasternodeCountLevel2 = mnodeman.size(2);
+        nMasternodeCountLevel3 = mnodeman.size(3);
+    }
+
+    int64_t nMoneySupply = chainActive.Tip()->nMoneySupply;
+    int64_t mNodeCoins;
+
+    mNodeCoins = nMasternodeCountLevel1 * 1000 * COIN;
+    mNodeCoins += nMasternodeCountLevel2 * 3000 * COIN;
+    mNodeCoins += nMasternodeCountLevel3 * 5000 * COIN;
+    mNodeCoins = mNodeCoins * coefficientmult;
+    	
+	
+    if (bDrift) {
+        int64_t mRawLocked = mNodeCoins;
+        // Add drift wiggle room to the calcuation.  
+        mNodeCoins += (mNodeCoins * ((double)Params().MasternodePercentDrift() / 100));
+        if (fDebug && (nHeight != lastHeight)) {
+            LogPrintf("GetSeeSaw(): Adding %d%% to %s locked coins.  Using %s to generate minimum required payment.\n", 
+                      (int)Params().MasternodePercentDrift(), FormatMoney(mRawLocked).c_str(), FormatMoney(mNodeCoins).c_str());
+        }
+    }
+
+    if (fDebug && (nHeight != lastHeight)) {
+        LogPrintf("GetSeeSaw(): Calculating Masternode Reward when Coin Supply is %s and Locked Coins are %s\n", 
+                  FormatMoney(nMoneySupply).c_str(), FormatMoney(mNodeCoins).c_str());
+    }
+
+    CAmount ret = 0;  // if not POS, we will have strange results; however just leave the warning above and let it go.
+
+    /*
+    ** If there aren't any masternodes; we don't want to give the full reward to the
+    ** staker, because that, at best, would discourage someone from creating a masternode.
+    ** It also would only be possible if masternode payments aren't being enforced. 
+    ** It also opens up a vulnerability for gaming if there is very few masternodes, as
+    ** drift would need to account for the possibility of a legit staker not seeing
+    ** the masternode.  By giving the staker very little for no masternodes, both issues
+    ** are solved.
+    */
+    int64_t SeeSawTableIndex = 0;
+    if (mNodeCoins != 0) { 
+        /*
+        ** Calculate the table index; levels are separated by 1.3%
+        ** with an offset of 4. This makes a total table length of
+        ** 77 elements; ranging from 0 to 76.
+        ** 0/anysupply/.013 = 0.  maxsupply/maxsupply/.013 = 76
+        ** Credits: CaveSpectre 2019
+        */
+        SeeSawTableIndex = floor((double)mNodeCoins/nMoneySupply/.013);
+    }
+    /*
+    ** fix up the position to get 96% to 20% masternode stake.
+    ** 100 - 0 - 4 = 96; 100 - 76 - 4 = 20
+    */
+    ret = blockValue * ((double)(100-SeeSawTableIndex-4) / 100);
+    if (fDebug && (nHeight != lastHeight)) {
+        LogPrintf("GetSeeSaw(): Calculated Masternode to receive %s%s of the %s Block Reward\n", 
+                  bDrift ? "at least " : "",
+                  FormatMoney(ret).c_str(),
+                  FormatMoney(blockValue).c_str());
+    }
+
+    lastHeight = nHeight; // save the height so we don't keep issuing the same messages
+    return ret;
+}
+
+
+
+
+int64_t GetMasternodePayment(int nHeight, unsigned mnlevel, int64_t blockValue, bool bDrift)
+{
+    int64_t mnPayment;
+
     if (nHeight <= Params().StartMNPaymentsBlock())
         return 0;
 
+    if (nHeight > Params().LAST_POW_BLOCK() + 1440 ) {
+        // PoS Phase
+        mnPayment = GetSeeSaw(blockValue, nHeight, bDrift);
+    } else {
+        // PoW Phase
+        mnPayment = blockValue / 100 * 27; // 27% to masternodes = 3% level1 + 9% Level 2 + 15% Level3
+    }
+
+    int64_t mnShare = mnPayment / 9;
     switch(mnlevel)
     {
+	     // div out shares
         case 1:
-            return blockValue / 100 * 3;
-
+            return mnShare * 1;
         case 2:
-            return blockValue / 100 * 9;
-
+            return mnShare * 3;
         case 3:
-            return blockValue / 100 * 15;
+            return mnShare * 5;
     }
 
     return 0;
 }
+
 
 bool IsInitialBlockDownload()
 {
@@ -2191,7 +2307,7 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
     LogPrint("bench", "      - Connect %u transactions: %.2fms (%.3fms/tx, %.3fms/txin) [%.2fs]\n", (unsigned)block.vtx.size(), 0.001 * (nTime1 - nTimeStart), 0.001 * (nTime1 - nTimeStart) / block.vtx.size(), nInputs <= 1 ? 0 : 0.001 * (nTime1 - nTimeStart) / (nInputs - 1), nTimeConnect * 0.000001);
 
     //PoW phase redistributed fees to miner. PoS stage destroys fees.
-    CAmount nExpectedMint = GetBlockValue(pindex->pprev->nHeight + 1, block.nTime);
+    CAmount nExpectedMint = GetBlockValue(pindex->pprev->nHeight + 1);
     if (block.IsProofOfWork())
         nExpectedMint += nFees;
 
@@ -3144,7 +3260,7 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
                 return state.DoS(100, error("CheckBlock() : coinbase do not have the dev or fund reward (vout)."),
                 REJECT_INVALID, "bad-cb-reward-missing");
 
-            CAmount block_value = GetBlockValue(nHeight , block.nTime);
+            CAmount block_value = GetBlockValue(nHeight);
 
             if (block.vtx[0].vout[DevIndex].nValue < block_value * Params().GetDevFee() / 100 || block.vtx[0].vout[FoudIndex].nValue < block_value * Params().GetFundFee() / 100)
                 return state.DoS(100, error("CheckBlock() : coinbase do not have the enough reward for dev or fund."),
@@ -3225,7 +3341,7 @@ bool CheckWork(const CBlock block, CBlockIndex* const pindexPrev)
     if (!pindexPrev)
         return error("%s : null pindexPrev for block %s", __func__, block.GetHash().ToString().c_str());
 
-    unsigned int nBitsRequired = GetNextWorkRequired(pindexPrev, block.nTime);
+    unsigned int nBitsRequired = GetNextWorkRequired(pindexPrev, &block);
 
     if (block.nBits != nBitsRequired)
         return error("%s : incorrect proof of work at %d", __func__, pindexPrev->nHeight + 1);

@@ -228,9 +228,10 @@ bool DisconnectBlocksAndReprocess(int blocks);
 
 // ***TODO***
 double ConvertBitsToDouble(unsigned int nBits);
-int64_t GetMasternodePayment(int nHeight, unsigned mnlevel, int64_t blockValue);
+int64_t GetMasternodePayment(int nHeight, unsigned mnlevel, int64_t blockValue, bool bDrift = false );
 
 bool ActivateBestChain(CValidationState& state, CBlock* pblock = NULL);
+CAmount GetBlockValue(int nHeight);
 CAmount GetBlockValue(int nHeight, uint32_t nTime);
 
 /** Create a new block index entry for a given block hash */

@@ -305,30 +305,52 @@ bool CMasternode::IsValidNetAddr()
            (IsReachable(addr) && addr.IsRoutable());
 }
 
-unsigned CMasternode::Level(CAmount vin_val)
+unsigned CMasternode::Level(CAmount vin_val, int blockHeight)
 {
-    switch(vin_val) {
-        case 1000  * COIN: return 1;
-        case 3000  * COIN: return 2;
-        case 5000 * COIN: return 3;
+    if (blockHeight >= 0 && blockHeight < 850000 ) {
+        switch(vin_val) {
+          case 1000  * COIN: return 1;
+          case 3000  * COIN: return 2;
+          case 5000  * COIN: return 3;
+      }
+    } else if (blockHeight >= 850000 && blockHeight < 1700000 ) {
+        switch(vin_val) {
+          case 5000   * COIN: return 1;
+          case 15000  * COIN: return 2;
+          case 25000  * COIN: return 3;
+        }
+    } else if (blockHeight >= 1700000 && blockHeight < 2550000 ) {
+        switch(vin_val) {
+          case 10000  * COIN: return 1;
+          case 30000  * COIN: return 2;
+          case 50000  * COIN: return 3;
+        }
+    } else if (blockHeight >= 2550000 )  {
+        switch(vin_val) {
+          case 20000   * COIN: return 1;
+          case 60000   * COIN: return 2;
+          case 100000  * COIN: return 3;
+        }
     }
-
+    
     return 0;
 }
 
-unsigned CMasternode::Level(const CTxIn& vin)
+
+unsigned CMasternode::Level(const CTxIn& vin, int blockHeight)
 {
     CAmount vin_val;
 
     if(!IsDepositCoins(vin, vin_val))
         return LevelValue::UNSPECIFIED;
 
-    return Level(vin_val);
+    return Level(vin_val, blockHeight);
 }
+
 
 bool CMasternode::IsDepositCoins(CAmount vin_val)
 {
-    return Level(vin_val);
+    return Level(vin_val, chainActive.Height());
 }
 
 bool CMasternode::IsDepositCoins(const CTxIn& vin, CAmount& vin_val)

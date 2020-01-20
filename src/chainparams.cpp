@@ -62,13 +62,13 @@ static Checkpoints::MapCheckpoints mapCheckpoints =
                               (300000 , uint256("0000000019130331ca62754cefb28aba6721a242008c097b6a35613590ee049c"))
                               (350000 , uint256("000000005170871c3d340a732dec8a614c4dc7d7965b40bf56ae6a2d43bdf890"))
                               (400000 , uint256("000000002f55568a0698d4cc3baaefc24c7fdcc6f27e48acd29c07eb7071f797"))
-                              (450000 , uint256("00000000650903357ae420759311c73ce99510940d8eca397b3d8a3623a7907e")); 
-
+                              (450000 , uint256("00000000650903357ae420759311c73ce99510940d8eca397b3d8a3623a7907e")) 
+                              (500000 , uint256("000000002aa08ff379058a176eac93f3dd2a486519f6edd4f6c1635edfefa3a2")); 
 
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
-    1568401513,     //  1555732761 : 250000 //  150000 : 1549396145,   // * UNIX timestamp of last checkpoint block
-    450000,      // * total number of transactions between genesis and last checkpoint
+    1571564693,          //  1568401513 : 450000  //  1555732761 : 250000 //  150000 : 1549396145,   // * UNIX timestamp of last checkpoint block
+    500000,      // * total number of transactions between genesis and last checkpoint
     2000        // * estimated number of transactions per day after checkpoint
 };
 
@@ -89,7 +89,7 @@ static const Checkpoints::CCheckpointData dataRegtest = {
     0,
     100};
 
-CAmount CChainParams::SubsidyValue(SubsidySwitchPoints::key_type level, uint32_t nTime) const
+CAmount CChainParams::SubsidyValue(SubsidySwitchPoints::key_type level) const
 {
     const auto& points = subsidySwitchPoints;
 
@@ -183,7 +183,7 @@ public:
         nTargetSpacing = 1 * 60;  // ZEON: 1 minute
         nAntiInstamineTime = 720; // 720 blocks with 1 reward for instamine prevention
         nMaturity = 60;
-        nMasternodeCountDrift = 3;
+        nMasternodePercentDrift  = 3;
         nMaxMoneyOut = 45000000 * COIN;
 
         nStartMasternodePaymentsBlock = 7001;
@@ -296,7 +296,7 @@ public:
         nTargetSpacing = 1 * 60;  // ZEON: 1 minute
         nLastPOWBlock = std::numeric_limits<decltype(nLastPOWBlock)>::max();
         nMaturity = 15;
-        nMasternodeCountDrift = 4;
+        nMasternodePercentDrift = 4;
         nModifierUpdateBlock = std::numeric_limits<decltype(nModifierUpdateBlock)>::max();
         nMaxMoneyOut = 1000000000 * COIN;
 

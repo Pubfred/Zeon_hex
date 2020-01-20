@@ -1,6 +1,8 @@
 // Copyright (c) 2014-2016 The Dash developers
 // Copyright (c) 2016-2017 The PIVX developers
 // Copyright (c) 2018-2019 The ZEON Core developers
+// Copyright (c) 2019-2020 The ZEON Core developers
+
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -87,6 +89,7 @@ bool IsSporkActive(int nSporkID)
         if (nSporkID == SPORK_4_MASTERNODE_PAYMENT_ENFORCEMENT) r = SPORK_4_MASTERNODE_PAYMENT_ENFORCEMENT_DEFAULT;
         if (nSporkID == SPORK_5_RECONSIDER_BLOCKS) r = SPORK_5_RECONSIDER_BLOCKS_DEFAULT;
         if (nSporkID == SPORK_6_MN_WINNER_MINIMUM_AGE) r = SPORK_6_MN_WINNER_MINIMUM_AGE_DEFAULT;
+        if (nSporkID == SPORK_7_NEW_PROTOCOL_ENFORCEMENT) r = SPORK_7_NEW_PROTOCOL_ENFORCEMENT_DEFAULT;
 
         if (r == -1) LogPrintf("GetSpork::Unknown Spork %d\n", nSporkID);
     }
@@ -109,7 +112,8 @@ int64_t GetSporkValue(int nSporkID)
         if (nSporkID == SPORK_4_MASTERNODE_PAYMENT_ENFORCEMENT) r = SPORK_4_MASTERNODE_PAYMENT_ENFORCEMENT_DEFAULT;
         if (nSporkID == SPORK_5_RECONSIDER_BLOCKS) r = SPORK_5_RECONSIDER_BLOCKS_DEFAULT;
         if (nSporkID == SPORK_6_MN_WINNER_MINIMUM_AGE) r = SPORK_6_MN_WINNER_MINIMUM_AGE_DEFAULT;
-
+        if (nSporkID == SPORK_7_NEW_PROTOCOL_ENFORCEMENT) r = SPORK_7_NEW_PROTOCOL_ENFORCEMENT_DEFAULT;
+        
 
         if (r == -1) LogPrintf("GetSpork::Unknown Spork %d\n", nSporkID);
     }
@@ -153,7 +157,6 @@ void ReprocessBlocks(int nBlocks)
         DisconnectBlocksAndReprocess(nBlocks);
     }
 
-    ActivateBestChain(state);
     if (state.IsValid()) {
         ActivateBestChain(state);
     }
@@ -248,6 +251,7 @@ int CSporkManager::GetSporkIDByName(std::string strName)
     if (strName == "SPORK_4_MASTERNODE_PAYMENT_ENFORCEMENT") return SPORK_4_MASTERNODE_PAYMENT_ENFORCEMENT;
     if (strName == "SPORK_5_RECONSIDER_BLOCKS") return SPORK_5_RECONSIDER_BLOCKS;
     if (strName == "SPORK_6_MN_WINNER_MINIMUM_AGE") return SPORK_6_MN_WINNER_MINIMUM_AGE;
+    if (strName == "SPORK_7_NEW_PROTOCOL_ENFORCEMENT") return SPORK_7_NEW_PROTOCOL_ENFORCEMENT;
 
     return -1;
 }
@@ -260,6 +264,7 @@ std::string CSporkManager::GetSporkNameByID(int id)
     if (id == SPORK_4_MASTERNODE_PAYMENT_ENFORCEMENT) return "SPORK_4_MASTERNODE_PAYMENT_ENFORCEMENT";
     if (id == SPORK_5_RECONSIDER_BLOCKS) return "SPORK_5_RECONSIDER_BLOCKS";
     if (id == SPORK_6_MN_WINNER_MINIMUM_AGE) return "SPORK_6_MN_WINNER_MINIMUM_AGE";
+    if (id == SPORK_7_NEW_PROTOCOL_ENFORCEMENT) return "SPORK_7_NEW_PROTOCOL_ENFORCEMENT";
 
     return "Unknown";
 }

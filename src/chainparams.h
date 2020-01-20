@@ -61,7 +61,7 @@ public:
     int GetDefaultPort() const { return nDefaultPort; }
     const uint256& ProofOfWorkLimit() const { return bnProofOfWorkLimit; }
     const uint256& StartWork() const { return bnStartWork; }
-    CAmount SubsidyValue(SubsidySwitchPoints::key_type level, uint32_t nTime) const;
+    CAmount SubsidyValue(SubsidySwitchPoints::key_type level) const;
     /** Used to check majorities for block version upgrade */
     int EnforceBlockUpgradeMajority() const { return nEnforceBlockUpgradeMajority; }
     int RejectBlockOutdatedMajority() const { return nRejectBlockOutdatedMajority; }
@@ -88,7 +88,7 @@ public:
     int COINBASE_MATURITY() const { return nMaturity; }
     CAmount MaxMoneyOut() const { return nMaxMoneyOut; }
     /** The masternode count that we will allow the see-saw reward payments to be off by */
-    int MasternodeCountDrift() const { return nMasternodeCountDrift; }
+    int MasternodePercentDrift() const { return nMasternodePercentDrift; }
     /** Make miner stop after a block is found. In RPC, don't return until nGenProcLimit blocks are generated */
     bool MineBlocksOnDemand() const { return fMineBlocksOnDemand; }
     /** In the future use NetworkIDString() for RPC fields */
@@ -139,7 +139,7 @@ protected:
     int nAntiInstamineTime;
     int nLastPOWBlock;
     int nStartMasternodePaymentsBlock;
-    int nMasternodeCountDrift;
+    int nMasternodePercentDrift;
     int nMaturity;
     int nModifierUpdateBlock;
     CAmount nMaxMoneyOut;

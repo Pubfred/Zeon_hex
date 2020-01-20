@@ -142,8 +142,8 @@ public:
     int64_t nLastDsq; //the dsq count from the last dsq broadcast of this node
     CMasternodePing lastPing;
 
-    static unsigned Level(CAmount vin_val);
-    static unsigned Level(const CTxIn& vin);
+    static unsigned Level(CAmount vin_val, int blockHeight);
+    static unsigned Level(const CTxIn& vin, int blockHeight);
 
     static bool IsDepositCoins(CAmount);
     static bool IsDepositCoins(const CTxIn& vin, CAmount& vin_val);
@@ -274,7 +274,7 @@ public:
 
     unsigned Level()
     {
-        return Level(deposit);
+        return Level(deposit,chainActive.Height());
     }
 
     int64_t GetLastPaid();
