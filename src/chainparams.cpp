@@ -215,10 +215,9 @@ public:
         assert(hashGenesisBlock == uint256("00000c9c83e5970601b5af203855c305a7e426deb667e6a8b3d1e1f66b52d220"));
         assert(genesis.hashMerkleRoot == uint256("151b932122b02e10a3f3689cbe07114cd5a4dfe37ec21e3540b614ca42b765e5"));
 
-       // vSeeds.push_back(CDNSSeedData("zeonhexalgo.fun", "seednode1.zeonhexalgo.fun"));     // Primary DNS Seeder
-      //  vSeeds.push_back(CDNSSeedData("zeonhexalgo.fun", "seednode2.zeonhexalgo.fun"));     // Secondary DNS Seeder 
-       
-	vSeeds.push_back(CDNSSeedData("zeonhexalgo.fun", "dnsseed1.zeonhexalgo.fun"));     // Primary DNS Seeder
+        vSeeds.push_back(CDNSSeedData("zeonhexalgo.fun", "seednode1.zeonhexalgo.fun"));     // Primary DNS Seeder
+        vSeeds.push_back(CDNSSeedData("zeonhexalgo.fun", "seednode2.zeonhexalgo.fun"));     // Secondary DNS Seeder 
+      	vSeeds.push_back(CDNSSeedData("zeonhexalgo.fun", "dnsseed1.zeonhexalgo.fun"));     // Primary DNS Seeder
 	vSeeds.push_back(CDNSSeedData("zeonhexalgo.fun", "dnsseed2.zeonhexalgo.fun"));     // Primary DNS Seeder
 	
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 80);
