@@ -5524,9 +5524,9 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
 
 int ActiveProtocol()
 {
-    /*if (IsSporkActive(SPORK_X_NEW_PROTOCOL_ENFORCEMENT_X))
+    if (IsSporkActive(SPORK_7_NEW_PROTOCOL_ENFORCEMENT))
        return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
-    */
+    
     return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT;
 }
 
