@@ -4290,8 +4290,8 @@ for example: alertnotify=echo %%s | mail -s "ZEON Alert" admin@foo.com
         <translation>Copyright (C) 2015-%i The PIVX Core Developers</translation>
     </message>
     <message>
-        <source>Copyright (C) 2018-%i The ZEON Core Developers</source>
-        <translation>Copyright (C) 2018-%i The ZEON Core Developers</translation>
+        <source>Copyright (C) 2019-%i The ZEON Core Developers</source>
+        <translation>Copyright (C) 2019-%i The ZEON Core Developers</translation>
     </message>
     <message>
         <source>Corrupted block database detected</source>

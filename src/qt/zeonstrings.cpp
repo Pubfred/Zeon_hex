@@ -239,7 +239,7 @@ QT_TRANSLATE_NOOP("zeon-core", "Copyright (C) 2009-%i The Bitcoin Core Developer
 QT_TRANSLATE_NOOP("zeon-core", "Copyright (C) 2014-%i The Dash Core Developers"),
 QT_TRANSLATE_NOOP("zeon-core", "Copyright (C) 2015-%i The PIVX Core Developers"),
 QT_TRANSLATE_NOOP("zeon-core", "Copyright (C) 2015-%i The XDNA Core Developers"),
-QT_TRANSLATE_NOOP("zeon-core", "Copyright (C) 2018-%i The ZEON Core Developers"),
+QT_TRANSLATE_NOOP("zeon-core", "Copyright (C) 2019-%i The ZEON Core Developers"),
 QT_TRANSLATE_NOOP("zeon-core", "Corrupted block database detected"),
 QT_TRANSLATE_NOOP("zeon-core", "Could not parse -rpcbind value %s as network address"),
 QT_TRANSLATE_NOOP("zeon-core", "Could not parse masternode.conf"),

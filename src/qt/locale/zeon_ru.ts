@@ -3215,7 +3215,7 @@ https://www.transifex.com/zeon-project/zeon-project-translations</translation>
         <translation>Copyright (C) 2015-%i Разработчики PIVX Core</translation>
     </message>
     <message>
-        <source>Copyright (C) 2018-%i The ZEON Core Developers</source>
+        <source>Copyright (C) 2019-%i The ZEON Core Developers</source>
 	<translation>Copyright (C) 2017-%i Разработчики ZEON core</translation>
     </message>
     <message>

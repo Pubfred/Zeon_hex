@@ -5481,7 +5481,7 @@ for example: alertnotify=echo %%s | mail -s &quot;ZEON Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="+1"/>
-        <source>Copyright (C) 2018-%i The ZEON Core Developers</source>
+        <source>Copyright (C) 2019-%i The ZEON Core Developers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

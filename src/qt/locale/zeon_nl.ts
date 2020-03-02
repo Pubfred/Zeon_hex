@@ -2508,8 +2508,8 @@ MultiSend: %1</translation>
         <translation>Copyright (C) 2015-%i The PIVX Core Ontwikkelaars</translation>
     </message>
     <message>
-        <source>Copyright (C) 2018-%i The ZEON Core Developers</source>
-        <translation>Copyright (C) 2018-%i The ZEON Core Ontwikkelaars</translation>
+        <source>Copyright (C) 2019-%i The ZEON Core Developers</source>
+        <translation>Copyright (C) 2019-%i The ZEON Core Ontwikkelaars</translation>
     </message>
     <message>
         <source>Error</source>

@@ -4238,8 +4238,8 @@ For eksempel: alertnotify=Echo %% | mail - s "ZEON ALARM!" e-mail@administrator.
         <translation>Copyright (C) 2015-%i The PIVX Core Developers</translation>
     </message>
     <message>
-        <source>Copyright (C) 2018-%i The ZEON Core Developers</source>
-        <translation>Copyright (C) 2018-%i The ZEON Core Developers</translation>
+        <source>Copyright (C) 2019-%i The ZEON Core Developers</source>
+        <translation>Copyright (C) 2019-%i The ZEON Core Developers</translation>
     </message>
     <message>
         <source>Corrupted block database detected</source>
