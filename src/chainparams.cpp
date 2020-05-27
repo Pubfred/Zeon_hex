@@ -74,7 +74,7 @@ static Checkpoints::MapCheckpoints mapCheckpoints =
 
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
-    1590450656     // 1581046576 : 650000  //  1568401513 : 450000  //  1555732761 : 250000 //  150000 : 1549396145,   // * UNIX timestamp of last checkpoint block
+    1590450656,    // 1581046576 : 650000  //  1568401513 : 450000  //  1555732761 : 250000 //  150000 : 1549396145,   // * UNIX timestamp of last checkpoint block
     800000,      // * total number of transactions between genesis and last checkpoint
     2000        // * estimated number of transactions per day after checkpoint
 };
