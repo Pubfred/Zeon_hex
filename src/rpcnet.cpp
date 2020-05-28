@@ -416,7 +416,7 @@ UniValue setban(const UniValue& params, bool fHelp)
 
         int64_t banTime = 0; //use standard bantime if not specified
         if (params.size() >= 3 && !params[2].isNull())
-            banTime = params[2].get_int64();
+            banTime = stoi(params[2].get_str());
 
         bool absolute = false;
         if (params.size() == 4)
