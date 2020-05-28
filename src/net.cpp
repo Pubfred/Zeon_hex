@@ -473,7 +473,7 @@ bool CNode::DisconnectOldProtocol(int nVersionRequired, string strLastCommand)
 {
     fDisconnect = false;
     if (nVersion < nVersionRequired) {
-        LogPrintf("%s : peer=%d using obsolete version %i; disconnecting\n", __func__, id, nVersion);
+//      LogPrintf("%s : peer=%d using obsolete version %i; disconnecting\n", __func__, id, nVersion);
         PushMessage("reject", strLastCommand, REJECT_OBSOLETE, strprintf("Version must be %d or greater", ActiveProtocol()));
         fDisconnect = true;
     }
