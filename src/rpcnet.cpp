@@ -420,7 +420,7 @@ UniValue setban(const UniValue& params, bool fHelp)
 
         bool absolute = false;
         if (params.size() == 4)
-            absolute = params[3].get_bool();
+            absolute = atoi((params[3].get_str()).c_str());
 
         isSubnet ? CNode::Ban(subNet, BanReasonManuallyAdded, banTime, absolute) : CNode::Ban(netAddr, BanReasonManuallyAdded, banTime, absolute);
 
