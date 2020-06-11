@@ -281,13 +281,13 @@ QString windowTitle = tr("ZEON Core") + " - ";
     subscribeToCoreSignals();
   
    //will be activate when pow ends
-   /*
+   
    labelStakingIcon->hide();
    QTimer* timerStakingIcon = new QTimer(labelStakingIcon);
    connect(timerStakingIcon, SIGNAL(timeout()), this, SLOT(setStakingStatus()));
    timerStakingIcon->start(10000);
    setStakingStatus();
-   */
+   
 }
 
 BitcoinGUI::~BitcoinGUI()

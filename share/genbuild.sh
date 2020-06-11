@@ -25,12 +25,18 @@ if [ -e "$(which git 2>/dev/null)" -a "$(git rev-parse --is-inside-work-tree 2>/
     RAWDESC=$(git describe --abbrev=0 2>/dev/null)
     git diff-index --quiet HEAD -- || DESC="$DESC-dirty"
 
+    # otherwise generate suffix from git, i.e. string like "59887e8-dirty"
+    SUFFIX=$(git rev-parse --short HEAD)
+    git diff-index --quiet HEAD -- || SUFFIX="$SUFFIX"
+
     # get a string like "2012-04-10 16:27:19 +0200"
     LAST_COMMIT_DATE="$(git log -n 1 --format="%ci")"
 fi
 
 if [ -n "$DESC" ]; then
     NEWINFO="#define BUILD_DESC \"$DESC\""
+elif [ -n "$SUFFIX" ]; then
+    NEWINFO="#define BUILD_SUFFIX $SUFFIX"
 else
     NEWINFO="// No build information available"
 fi
