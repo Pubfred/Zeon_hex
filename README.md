@@ -1,5 +1,5 @@
 
-Soon collateral Change  !! 
+###  Soon collateral Change at block  850001 !! 
 ### Masternode 3 levels from  block 850001 to 1700000  ....
 
 <table>
