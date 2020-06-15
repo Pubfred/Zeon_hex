@@ -1,3 +1,18 @@
+
+Soon collateral Change  !! 
+### Masternode 3 levels from  block 850001 to 1700000  ....
+
+<table>
+<tr><th>Starting Block</th><th>Ending Block</th><th>Type</th><th>Collateral</th></tr>
+<tr><th>850001</th><th>1700000</th><th>Light Node</th><th>5000‬</th></tr>
+<tr><th>850001</th><th>‭1700000‬</th><th>Medium Node</th><th>15000‬</th></tr>
+<tr><th>850001</th><th>‭1700000</th><th>Full Node</th><th>‭25000‬</th></tr>
+</table>
+
+ 
+
+
+
 [![Build Status](https://travis-ci.org/ZEONNetwork/zeon.svg?branch=master)](https://travis-ci.org/ZEONNetwork/zeon)
 
 
