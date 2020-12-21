@@ -156,11 +156,8 @@ https://ihostmn.com/hostmn.php?coin=ZEON-5K
 
 
 
-### Status 21 October 
 
-![Screenshot](png/Status_21_10_2018.png)
-
-### Status 23 November 12 AM
+### Status 23 November 2018 12 AM
 ![Screenshot](png/Status_23_11_12h.png)
 
 
@@ -169,19 +166,6 @@ https://ihostmn.com/hostmn.php?coin=ZEON-5K
 https://zeonhexalgo.fun/roadmap.html
 
 ![Screenshot](png/Roadmap.png)
-
-
-### Network Hasrate 
-![Screenshot](png/Hasrate_2.png)
-
-
-### Mining Pools Stats  
-[https://poolexplorer.com/coin/5557](https://poolexplorer.com/coin/5557)
-![Screenshot](png/Mining%20Pools.png)
-
-
-[https://miningpoolstats.stream/zeon](https://miningpoolstats.stream/zeon)
-![Screenshot](png/miningpoolstats_2.png)
 
 
 
