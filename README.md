@@ -1,5 +1,4 @@
 
-###  Soon collateral Change at block  850001 !! 
 ### Masternode 3 levels from  block 850001 to 1700000  ....
 
 <table>
@@ -96,9 +95,6 @@ that it is more profitable for users running masternodes than it would be to sta
 equal number of coins, under the normal circumstances of being below the
 equilibrium threshold. The reason behind this is due to the extra cost, risk and time
 associated with maintaining the masternodes are greater than staking alone.
-
-
- ![Screenshot](png/network-hashrate.png)    ![Screenshot](png/blockreward.png)  
 
 
 
@@ -213,10 +209,6 @@ https://zeonhexalgo.fun/roadmap.html
 
 
 
-[https://tradebtc.zeonhexalgo.fun](https://tradebtc.zeonhexalgo.fun)
-
-![Screenshot](png/Zeon_trade1.png)
-
 
 
 ###   Main site for ZEON : 
@@ -245,32 +237,6 @@ https://zeonhexalgo.fun/roadmap.html
 
 
 
-###   Masternode Info site for ZEON  :
-
-https://masternode.zeonhexalgo.fun
-
-
-![Screenshot](png/Masternode_Info.png)	
-
-
-
-###   Zeon coin Info   :
-
-https://masternode.zeonhexalgo.fun/coininfo 
-
-![Screenshot](png/Zeon_market.png)	
-
-
-###   Zeon on MCT+ Platform   :
-
-https://trade.mct.plus/
-
-You can now exchange ZEON for 38 Other Cryptos ...
-
-![Screenshot](png/Zeon_MCT.png)	
-
-![Screenshot](png/MCT_-_ZEON_Listed.png)	
-
 
 ###   Zeon seeds 
 
@@ -285,11 +251,6 @@ https://wallet.zeonhexalgo.fun/
 
 ![Screenshot](png/Zeon_wallet.png)	
 
-###   Masternode Service 
-
-[https://www.nodeasy.com/](https://www.nodeasy.com/)
-
-![Screenshot](png/nodeasy.jpg)	
 
 
 ###   Discord Bot Stats 
@@ -312,11 +273,6 @@ https://wallet.zeonhexalgo.fun/
 
 ![Screenshot](png/Dre1iY6WkAIbfeJ.jpg)	
 
-[https://altmarkets.io/trading/zeonbtc](https://altmarkets.io/trading/zeonbtc)
-
-![Screenshot](png/D4X5pqfWwAEwDSq.png)	
-
-BTC , LTC and BTCZ  pairs  on 
 
 [ https://cratex.io]( https://cratex.io)
 
