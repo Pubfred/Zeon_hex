@@ -148,11 +148,10 @@ Feel free to download release here :
 Host:         
 https://ihostmn.com/
 
-https://ihostmn.com/hostmn.php?coin=ZEON-1K 
-
-https://ihostmn.com/hostmn.php?coin=ZEON-3K 
-
 https://ihostmn.com/hostmn.php?coin=ZEON-5K 
+
+
+https://ihostmn.com/hostmn.php?coin=ZEON-25K 
 
 
 
